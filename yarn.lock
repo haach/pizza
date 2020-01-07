@@ -8835,6 +8835,11 @@ react-scripts@3.3.0:
   optionalDependencies:
     fsevents "2.1.2"
 
+react-step-wizard@^5.3.0:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/react-step-wizard/-/react-step-wizard-5.3.0.tgz#2965b647bef457ec2c187e3f02826fcb98975875"
+  integrity sha512-WsYIvfYn9dDQowrqBK0vW5kSzavNGmq7epmcGRET6aFfWlz6Up+M3Hqiwj0S/zyufO3mEhuFGpZCKaygDgwKuA==
+
 react@^16.12.0:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.12.0.tgz#0c0a9c6a142429e3614834d5a778e18aa78a0b83"
