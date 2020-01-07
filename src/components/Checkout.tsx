@@ -2,7 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { WizardStep } from "./";
 import { StepWizardChildProps } from "react-step-wizard";
-import { Button } from "./styledComponents";
+import {
+  Button,
+  Heading2,
+  SplitView,
+  ContentBox,
+  Paragraph
+} from "./styledComponents";
 
 export const Checkout: React.FC<Partial<StepWizardChildProps>> = props => {
   const checkout = () => {
@@ -15,13 +21,20 @@ export const Checkout: React.FC<Partial<StepWizardChildProps>> = props => {
   };
   return (
     <WizardStep>
-      <CheckoutText>
-        Checkout
-        <Button onClick={props.previousStep}>change selection</Button>
-        <Button onClick={() => checkout()} appearance="primary">
-          order now
-        </Button>
-      </CheckoutText>
+      <SplitView>
+        <ContentBox>
+          <Heading2>Checkout</Heading2>
+          <Paragraph>
+            Please enter your credit card data and <br />
+            You can either add more pizza to your cart or go to checkout.
+          </Paragraph>
+          <Button onClick={props.previousStep}>edit order</Button>
+          <Button onClick={() => checkout()} appearance="primary">
+            order now
+          </Button>
+        </ContentBox>
+        <div>Pizza creator here</div>
+      </SplitView>
     </WizardStep>
   );
 };

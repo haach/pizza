@@ -3,7 +3,7 @@ import { colors, fonts } from "../utils/variables";
 
 // =============== UI ELEMENTS ================
 export const Button = styled.button`
-  ${fonts.Lead};
+  ${fonts.Button};
   border-radius: 30px;
   padding: 15px 25px;
   text-transform: uppercase;
@@ -13,6 +13,7 @@ export const Button = styled.button`
   color: ${colors.default.base};
   opacity: 1;
   transition: all 0.2s ease-in-out;
+  margin: 0 25px 15px 0;
 
   ${({ appearance }: { appearance?: string }) =>
     appearance &&
@@ -40,6 +41,7 @@ export const Heading1 = styled.h1`
 export const Heading2 = styled.h1`
   ${fonts.Heading2};
   color: ${colors.default.dark};
+  margin: 0 0 30px 0;
 `;
 export const Paragraph = styled.h1`
   ${fonts.Paragraph};
@@ -47,13 +49,20 @@ export const Paragraph = styled.h1`
   margin: 0 0 30px 0;
   max-width: 400px;
 `;
+export const Lead = styled.p`
+  ${fonts.Lead};
+  text-transform: uppercase;
+  color: ${colors.primary.base};
+  margin: 0;
+`;
 
 // ================= LAYOUT ===================
 export const SplitView = styled.div`
   height: 100%;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: ${({ centered }: { centered?: boolean }) =>
+    centered ? "center" : "flex-start"};
   > * {
     width: 50%;
   }

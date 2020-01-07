@@ -20,17 +20,6 @@ export const colors = {
 };
 
 export const fonts = {
-  Paragraph: {
-    fontSize: "14px",
-    lineHeight: "1.6",
-    fontWeight: 400
-  },
-  Lead: {
-    fontSize: "14px",
-    lineHeight: "1.2",
-    fontWeight: 700,
-    letterSpacing: "1px"
-  },
   Heading1: {
     fontSize: "5em",
     lineHeight: "1",
@@ -40,5 +29,22 @@ export const fonts = {
   Heading2: {
     fontSize: "3em",
     lineHeight: "1.2"
+  },
+  Paragraph: {
+    fontSize: "14px",
+    lineHeight: "1.6",
+    fontWeight: 400
+  },
+  Lead: {
+    fontSize: "calc(5em * 0.455)",
+    lineHeight: "1",
+    fontWeight: 800,
+    letterSpacing: "1px"
+  },
+  Button: {
+    fontSize: "14px",
+    lineHeight: "1.2",
+    fontWeight: 700,
+    letterSpacing: "1px"
   }
 };

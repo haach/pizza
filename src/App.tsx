@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import styled from "styled-components";
 import {
   AddressInput,
@@ -14,6 +15,14 @@ import { colors } from "./utils/variables";
 const App: React.FC = () => {
   return (
     <AppContainer>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>🍕 Pizza Challenge 🍕</title>
+        <meta
+          name="description"
+          content="Let’s build a simple page to order a pizza using React.Helmet application"
+        />
+      </Helmet>
       <Triangle />
       <Card>
         <Header />

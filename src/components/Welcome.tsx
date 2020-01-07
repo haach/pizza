@@ -2,6 +2,7 @@ import {
   Button,
   SplitView,
   Heading1,
+  Lead,
   ContentBox,
   Paragraph
 } from "./styledComponents";
@@ -16,9 +17,10 @@ import { colors } from "../utils/variables";
 export const Welcome: React.FC<Partial<StepWizardChildProps>> = props => {
   return (
     <WizardStep>
-      <SplitView>
+      <SplitView centered={true}>
         <ContentBox>
-          <Heading1>Free style pizza</Heading1>
+          <Lead>Free style</Lead>
+          <Heading1>pizza</Heading1>
           <Paragraph>
             Hey! Looks like you ❤ pizza?
             <br />
