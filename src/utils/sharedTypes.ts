@@ -1,10 +1,23 @@
-export type item = {
+export type Item = {
   name: string;
   price: number;
 };
 
-export interface cartItem {
+export interface CartItem {
   id: string;
   size: string;
-  toppings: item[];
+  toppings: Item[];
+}
+
+export type Address = {
+  streetName: string;
+  houseNumber: string;
+  postalCode: number;
+  city: string;
+};
+
+export interface User {
+  name: string;
+  address: Address;
+  phone: number;
 }
