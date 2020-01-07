@@ -8,7 +8,7 @@ export const Button = styled.button`
   padding: 15px 25px;
   text-transform: uppercase;
   cursor: pointer;
-  border: 2px solid ${colors.default.light};
+  border: 0 solid;
   background-color: ${colors.default.lightest};
   color: ${colors.default.base};
   opacity: 1;
@@ -19,7 +19,6 @@ export const Button = styled.button`
     appearance &&
     appearance === "primary" &&
     css`
-      border-color: ${colors.primary.base};
       background-color: ${colors.primary.base};
       color: ${colors.primary.contrast};
     `}
@@ -28,6 +27,16 @@ export const Button = styled.button`
   &:focus {
     outline: none;
     opacity: 0.9;
+  }
+`;
+
+export const FormSection = styled.div`
+  display: flex;
+  > * {
+    margin-bottom: 15px;
+    &:not(:last-child) {
+      margin-right: 15px;
+    }
   }
 `;
 
@@ -54,6 +63,11 @@ export const Lead = styled.p`
   text-transform: uppercase;
   color: ${colors.primary.base};
   margin: 0;
+`;
+export const Label = styled.p`
+  ${fonts.Paragraph};
+  color: ${colors.default.base};
+  margin: 0 0 4px 0;
 `;
 
 // ================= LAYOUT ===================

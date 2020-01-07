@@ -1,7 +1,7 @@
 export const colors = {
   default: {
-    lightest: "#F9F9FB",
-    light: "#E4E7EB",
+    lightest: "#f1f1f9",
+    light: "#cbced2",
     base: "#425A70",
     dark: "#234361",
     contrast: "#ed5656"

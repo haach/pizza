@@ -1,8 +1,8 @@
-import { item } from "./sharedTypes";
+import { Item } from "./sharedTypes";
 
 // This data would come typically from BE
 
-export const sizes: item[] = [
+export const sizes: Item[] = [
   {
     name: "small",
     price: 15
@@ -16,7 +16,7 @@ export const sizes: item[] = [
     price: 25
   }
 ];
-export const toppings: item[] = [
+export const toppings: Item[] = [
   {
     name: "Olives",
     price: 3
