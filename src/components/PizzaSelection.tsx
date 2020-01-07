@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { WizardStep } from "./";
 import { StepWizardChildProps } from "react-step-wizard";
+import { Button } from "./styledComponents";
 
 export const PizzaSelection: React.FC<Partial<
   StepWizardChildProps
@@ -10,8 +11,10 @@ export const PizzaSelection: React.FC<Partial<
     <WizardStep>
       <PizzaSelectionText>
         PizzaSelection
-        <button onClick={props.previousStep}>change address</button>
-        <button onClick={props.nextStep}>see cart</button>
+        <Button onClick={props.previousStep}>change address</Button>
+        <Button onClick={props.nextStep} appearance="primary">
+          see cart
+        </Button>
       </PizzaSelectionText>
     </WizardStep>
   );

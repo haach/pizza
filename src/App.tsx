@@ -9,30 +9,72 @@ import {
   Welcome
 } from "./components";
 import StepWizard from "react-step-wizard";
+import { colors } from "./utils/variables";
 
 const App: React.FC = () => {
   return (
-    <Card>
-      <Header />
-      <StepWizard isHashEnabled={true}>
-        <Welcome />
-        <AddressInput />
-        <PizzaSelection />
-        <Cart />
-        <Checkout />
-      </StepWizard>
-    </Card>
+    <AppContainer>
+      <Triangle />
+      <Card>
+        <Header />
+        <StepWizard className="stepWizard" isHashEnabled={true}>
+          <Welcome />
+          <AddressInput />
+          <PizzaSelection />
+          <Cart />
+          <Checkout />
+        </StepWizard>
+      </Card>
+    </AppContainer>
   );
 };
 
 export default App;
 
+const AppContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+  padding: 10vh 10vw;
+  position: relative;
+`;
 const Card = styled.div`
-  width: 80vw;
-  height: 80vh;
-  margin: 10vh 10vw;
+  z-index: 100;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
   border-radius: 5px;
-  -webkit-box-shadow: 0px 5px 45px 0px rgba(204, 204, 204, 1);
-  -moz-box-shadow: 0px 5px 45px 0px rgba(204, 204, 204, 1);
-  box-shadow: 0px 5px 45px 0px rgba(204, 204, 204, 1);
+  box-shadow: 10px 25px 55px 0px rgba(0, 0, 0, 0.3);
+
+  /* NOT PRETTY BUT NEEDED TO OVERWRITE PLUGIN STYLES */
+  .stepWizard {
+    height: calc(100% - 64px);
+  }
+  .stepWizard > div,
+  .stepWizard > div > div {
+    height: 100%;
+  }
+`;
+const Triangle = styled.div`
+  z-index: -1;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    to bottom,
+    ${colors.primary.lightest} 0%,
+    #ed5656 100%
+  );
+  &:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 110vw 110vw;
+    border-color: transparent transparent transparent #fff;
+  }
 `;

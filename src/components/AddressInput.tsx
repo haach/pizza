@@ -2,13 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import { WizardStep } from "./";
 import { StepWizardChildProps } from "react-step-wizard";
+import { Button } from "./styledComponents";
 
 export const AddressInput: React.FC<Partial<StepWizardChildProps>> = props => {
   return (
     <WizardStep>
       <AddressInputText>
         AddressInput
-        <button onClick={props.nextStep}>create pizza</button>
+        <Button onClick={props.previousStep}>back</Button>
+        <Button onClick={props.nextStep} appearance="primary">
+          create pizza
+        </Button>
       </AddressInputText>
     </WizardStep>
   );

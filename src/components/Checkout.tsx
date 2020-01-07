@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { WizardStep } from "./";
 import { StepWizardChildProps } from "react-step-wizard";
+import { Button } from "./styledComponents";
 
 export const Checkout: React.FC<Partial<StepWizardChildProps>> = props => {
   const checkout = () => {
@@ -16,8 +17,10 @@ export const Checkout: React.FC<Partial<StepWizardChildProps>> = props => {
     <WizardStep>
       <CheckoutText>
         Checkout
-        <button onClick={props.previousStep}>change selection</button>
-        <button onClick={() => checkout()}>order now</button>
+        <Button onClick={props.previousStep}>change selection</Button>
+        <Button onClick={() => checkout()} appearance="primary">
+          order now
+        </Button>
       </CheckoutText>
     </WizardStep>
   );
