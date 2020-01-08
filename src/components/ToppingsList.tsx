@@ -6,7 +6,7 @@ import { toppings } from "../utils/pizzaData";
 import { Item } from "../utils/sharedTypes";
 
 interface ToppingsListProps {
-  selection: { size: Item; toppings: Item[] };
+  selection: { size: Item; toppings: { [id: string]: Item } };
   updateSelection: Function;
 }
 
@@ -23,11 +23,11 @@ export const ToppingsList: React.FC<ToppingsListProps> = ({
         </Description>
         <Price>{selection.size.price} €</Price>
       </ListItem>
-      {toppings.map((top: Item) => (
-        <ListItem key={top.name}>
+      {Object.keys(toppings).map((topping: string) => (
+        <ListItem key={toppings[topping].name}>
           <input type="checkbox" />
-          <Name>{top.name}</Name>
-          <Price>{top.price} €</Price>
+          <Name>{toppings[topping].name}</Name>
+          <Price>{toppings[topping].price} €</Price>
         </ListItem>
       ))}
     </React.Fragment>

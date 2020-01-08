@@ -19,11 +19,16 @@ import sizeIcon_active from "../assets/sizeIcon_active.svg";
 export const PizzaSelection: React.FC<Partial<
   StepWizardChildProps
 >> = props => {
-  const [selection, setSelection] = useState({ size: sizes[1], toppings: [] });
+  const [selection, setSelection] = useState({
+    size: sizes.medium,
+    toppings: {}
+  });
   const updateSelection = (item: Item, type: "size" | "topping") => {
     let updatedSelection = { ...selection };
     if (type === "size") {
       updatedSelection.size = item;
+    } else {
+      /* updatedSelection.toppings[item.name]; */
     }
     console.log("updatedSelection", updatedSelection);
     setSelection(updatedSelection);
@@ -48,25 +53,27 @@ export const PizzaSelection: React.FC<Partial<
         <ContentBox>
           <Preview size={selection.size.name}>
             <Base src={toppingsImages.base} alt="Margarita base" />
-            {toppings.map((top: Item) => (
+            {Object.keys(toppings).map((top: string) => (
               <Topping
-                src={toppingsImages[top.name.toLocaleLowerCase()]}
-                key={top.name}
-                alt={top.name}
+                src={toppingsImages[top]}
+                key={toppings[top].name}
+                alt={toppings[top].name}
                 isVisible={true}
               />
             ))}
           </Preview>
           <SizeSelector>
             <Label>Select pizza size</Label>
-            {sizes.map((size: Item) => (
+            {Object.keys(sizes).map((size: string) => (
               <SizeIcon
                 src={
-                  selection.size.name === size.name ? sizeIcon_active : sizeIcon
+                  selection.size.name === sizes[size].name
+                    ? sizeIcon_active
+                    : sizeIcon
                 }
-                key={size.name}
-                alt={size.name}
-                onClick={() => updateSelection(size, "size")}
+                key={sizes[size].name}
+                alt={sizes[size].name}
+                onClick={() => updateSelection(sizes[size], "size")}
               />
             ))}
           </SizeSelector>

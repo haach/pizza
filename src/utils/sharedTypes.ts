@@ -1,5 +1,4 @@
 export type Item = {
-  type: "size" | "topping";
   name: string;
   price: number;
 };
