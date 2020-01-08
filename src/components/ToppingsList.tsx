@@ -20,7 +20,7 @@ export const ToppingsList: React.FC<ToppingsListProps> = ({
   updateSelection
 }: ToppingsListProps) => {
   return (
-    <React.Fragment>
+    <div>
       <ListItem>
         <Name>Basis Margarita - {selection.size.name}</Name>
         <Description>
@@ -46,7 +46,7 @@ export const ToppingsList: React.FC<ToppingsListProps> = ({
         <Name>total</Name>
         <Price>{selection.totalPrice} €</Price>
       </ListItem>
-    </React.Fragment>
+    </div>
   );
 };
 
@@ -57,6 +57,10 @@ const ListItem = styled.div`
   position: relative;
   &:not(:last-child) {
     border-bottom: 1px solid ${colors.default.light};
+  }
+  &:last-child {
+    margin-top: 2px;
+    border-top: 1px solid ${colors.default.light};
   }
   .checkBox {
     margin: 0;
@@ -69,6 +73,6 @@ const Name = styled(Bold)``;
 const Description = styled(Label)``;
 const Price = styled(Bold)`
   position: absolute;
-  top: 2px;
+  top: 5px;
   right: 0;
 `;

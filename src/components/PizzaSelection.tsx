@@ -26,13 +26,14 @@ export const PizzaSelection: React.FC<Partial<
     totalPrice: sizes.medium.price
   });
   const updateSelection = (item: Item | string) => {
-    console.log("item", item);
     let updatedSelection = { ...selection };
     if (typeof item !== "string") {
+      // size
       updatedSelection.size = item;
     } else {
+      // topping
       selection.toppings[item]
-        ? (updatedSelection = updatedSelection)
+        ? delete updatedSelection.toppings[item]
         : (updatedSelection.toppings = {
             ...updatedSelection.toppings,
             [item]: toppings[item]
@@ -43,7 +44,6 @@ export const PizzaSelection: React.FC<Partial<
       Object.keys(updatedSelection.toppings)
         .map(id => updatedSelection.toppings[id].price)
         .reduce((a, b) => a + b, 0);
-    console.log("updatedSelection", updatedSelection);
     setSelection(updatedSelection);
   };
   return (
@@ -72,7 +72,7 @@ export const PizzaSelection: React.FC<Partial<
                 src={toppingsImages[top]}
                 key={toppings[top].name}
                 alt={toppings[top].name}
-                isVisible={true}
+                isVisible={!!selection.toppings[top]}
               />
             ))}
           </Preview>
