@@ -45,10 +45,10 @@ export const Welcome: React.FC<Partial<StepWizardChildProps>> = props => {
 const AnimationConatiner = styled.div`
   position: relative;
   height: 100%;
+  overflow: visible;
 `;
 const Triangle = styled.div`
   position: absolute;
-  overflow: hidden;
   top: 0;
   bottom: 0;
   left: 0;

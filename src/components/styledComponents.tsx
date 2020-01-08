@@ -33,7 +33,7 @@ export const Button = styled.button`
 export const FormSection = styled.div`
   display: flex;
   > * {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     &:not(:last-child) {
       margin-right: 15px;
     }
@@ -68,6 +68,14 @@ export const Label = styled.p`
   ${fonts.Paragraph};
   color: ${colors.default.base};
   margin: 0 0 4px 0;
+`;
+
+export const ErrorHolder = styled.p`
+  ${fonts.Helper};
+  color: ${colors.error};
+  margin: 2px 0 0 0;
+
+  position: absolute;
 `;
 
 // ================= LAYOUT ===================

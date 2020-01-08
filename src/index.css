@@ -11,6 +11,10 @@ body {
   box-sizing: border-box;
 }
 
+form {
+  max-width: 500px;
+}
+
 /* ================= KEYFRAMES =================== */
 @keyframes fly {
   0%,

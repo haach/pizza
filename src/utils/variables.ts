@@ -46,5 +46,9 @@ export const fonts = {
     lineHeight: "1.2",
     fontWeight: 700,
     letterSpacing: "1px"
+  },
+  Helper: {
+    fontSize: "10px",
+    lineHeight: "1.4"
   }
 };

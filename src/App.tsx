@@ -17,7 +17,7 @@ const App: React.FC = () => {
     <AppContainer>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>🍕 Pizza Challenge 🍕</title>
+        <title>Pizza Challenge</title>
         <meta
           name="description"
           content="Let’s build a simple page to order a pizza using React.Helmet application"

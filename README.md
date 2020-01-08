@@ -19,7 +19,7 @@ So I decided to make this more of a real life example, where I would have design
 
 At first I thought about using a react ui component libraries, like Evergreen, but eventually decided to create my components myself, because I wanted full control over their behaviour and I only needed a very limited amount of elements. (Also I really disliked the look of most of those libraries 🤫)
 
-Because I wanted to use some nice animations, I replaced the photo with this [pizza illustration](https://www.freepik.com/free-vector/pizza-slice-background_1168758.htm#page=1&query=pizza&position=46) from freepik. The (pizza mockups)[https://www.freepik.com/free-vector/colorful-round-tasty-pizza_3799722.htm] that i used for the creator are also from freepik. The challenge right away reminded me of this game I had in the early 2000s, [pizza connection 2](https://store.steampowered.com/app/599000/Pizza_Connection_2/). As a little homage, I wanted the pizza creator to go bit into that direction.
+Because I wanted to use some nice animations, I replaced the photo with this [pizza illustration](https://www.freepik.com/free-vector/pizza-slice-background_1168758.htm#page=1&query=pizza&position=46) from freepik. The (pizza mockup)[https://www.freepik.com/free-vector/colorful-round-tasty-pizza_3799722.htm] that i used for the creator is also from freepik. The challenge right away reminded me of this game I had in the early 2000s, [pizza connection 2](https://store.steampowered.com/app/599000/Pizza_Connection_2/). As a little homage, I wanted the pizza creator to go bit into that direction.
 
 ## 💻 Implementation
 
