@@ -47,25 +47,37 @@ export const Heading1 = styled.h1`
   color: ${colors.primary.base};
   margin: 0 0 30px 0;
 `;
-export const Heading2 = styled.h1`
+export const Heading2 = styled.h2`
   ${fonts.Heading2};
   color: ${colors.default.dark};
   margin: 0 0 30px 0;
 `;
-export const Paragraph = styled.h1`
+export const Heading3 = styled.h3`
+  ${fonts.Heading3};
+  text-transform: uppercase;
+  color: ${colors.primary.base};
+  margin: 0;
+`;
+export const Paragraph = styled.p`
   ${fonts.Paragraph};
   color: ${colors.default.base};
   margin: 0 0 30px 0;
   max-width: 400px;
 `;
+export const Bold = styled.span`
+  ${fonts.Paragraph};
+  color: ${colors.default.dark};
+  font-weight: 600;
+`;
 export const Lead = styled.p`
   ${fonts.Lead};
-  text-transform: uppercase;
   color: ${colors.primary.base};
+  text-transform: uppercase;
   margin: 0;
 `;
 export const Label = styled.p`
   ${fonts.Paragraph};
+  font-size: 80%;
   color: ${colors.default.base};
   margin: 0 0 4px 0;
 `;

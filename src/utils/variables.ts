@@ -30,16 +30,21 @@ export const fonts = {
     fontSize: "3em",
     lineHeight: "1.2"
   },
+  Heading3: {
+    fontSize: "2.6em",
+    lineHeight: "1",
+    fontWeight: 800,
+    letterSpacing: "1px"
+  },
   Paragraph: {
-    fontSize: "14px",
+    fontSize: "15px",
     lineHeight: "1.6",
     fontWeight: 400
   },
   Lead: {
-    fontSize: "calc(5em * 0.455)",
-    lineHeight: "1",
-    fontWeight: 800,
-    letterSpacing: "1px"
+    fontSize: "16px",
+    lineHeight: "1.3",
+    fontWeight: 600
   },
   Button: {
     fontSize: "14px",

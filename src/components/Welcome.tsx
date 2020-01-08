@@ -2,7 +2,7 @@ import {
   Button,
   SplitView,
   Heading1,
-  Lead,
+  Heading3,
   ContentBox,
   Paragraph
 } from "./styledComponents";
@@ -19,7 +19,7 @@ export const Welcome: React.FC<Partial<StepWizardChildProps>> = props => {
     <WizardStep>
       <SplitView centered={true}>
         <ContentBox>
-          <Lead>Free style</Lead>
+          <Heading3>Free style</Heading3>
           <Heading1>pizza</Heading1>
           <Paragraph>
             Hey! Looks like you ❤ pizza?
