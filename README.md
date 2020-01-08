@@ -32,3 +32,15 @@ I used several npm modules:
 [styled-components](https://www.styled-components.com/): Well you know styled components
 
 []():
+
+### What I did not do
+
+But would do in real life:
+
+- write tests
+- create more mudolar components / use component library
+- fetch sizes & toppings from backend
+- store all data in backend instead of local storage
+- make responsive
+- make browser & device compatible
+- have a favicon

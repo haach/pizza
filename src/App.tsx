@@ -57,7 +57,7 @@ const Card = styled.div`
 
   /* NOT PRETTY BUT NEEDED TO OVERWRITE PLUGIN STYLES */
   .stepWizard {
-    height: calc(100% - 64px);
+    height: calc(100% - 62px);
   }
   .stepWizard > div,
   .stepWizard > div > div {

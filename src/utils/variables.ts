@@ -31,7 +31,7 @@ export const fonts = {
     lineHeight: "1.2"
   },
   Heading3: {
-    fontSize: "2.6em",
+    fontSize: "2.4em",
     lineHeight: "1",
     fontWeight: 800,
     letterSpacing: "1px"

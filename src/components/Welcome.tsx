@@ -19,7 +19,7 @@ export const Welcome: React.FC<Partial<StepWizardChildProps>> = props => {
     <WizardStep>
       <SplitView centered={true}>
         <ContentBox>
-          <Heading3>Free style</Heading3>
+          <Heading3>Freestyle</Heading3>
           <Heading1>pizza</Heading1>
           <Paragraph>
             Hey! Looks like you ❤ pizza?
