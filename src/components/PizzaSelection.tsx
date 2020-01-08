@@ -7,7 +7,8 @@ import {
   ContentBox,
   Heading2,
   Paragraph,
-  Label
+  Label,
+  FakeLink
 } from "./styledComponents";
 import styled from "styled-components";
 import { toppings, sizes } from "../utils/pizzaData";
@@ -21,15 +22,27 @@ export const PizzaSelection: React.FC<Partial<
 >> = props => {
   const [selection, setSelection] = useState({
     size: sizes.medium,
-    toppings: {}
+    toppings: {} as { [id: string]: Item },
+    totalPrice: sizes.medium.price
   });
-  const updateSelection = (item: Item, type: "size" | "topping") => {
+  const updateSelection = (item: Item | string) => {
+    console.log("item", item);
     let updatedSelection = { ...selection };
-    if (type === "size") {
+    if (typeof item !== "string") {
       updatedSelection.size = item;
     } else {
-      /* updatedSelection.toppings[item.name]; */
+      selection.toppings[item]
+        ? (updatedSelection = updatedSelection)
+        : (updatedSelection.toppings = {
+            ...updatedSelection.toppings,
+            [item]: toppings[item]
+          });
     }
+    updatedSelection.totalPrice =
+      updatedSelection.size.price +
+      Object.keys(updatedSelection.toppings)
+        .map(id => updatedSelection.toppings[id].price)
+        .reduce((a, b) => a + b, 0);
     console.log("updatedSelection", updatedSelection);
     setSelection(updatedSelection);
   };
@@ -39,16 +52,17 @@ export const PizzaSelection: React.FC<Partial<
         <ContentBox>
           <Heading2>Create your pizza</Heading2>
           <Paragraph>
+            Delivery to: ADREES, ADDRESS{" "}
+            <FakeLink onClick={props.previousStep}>edit</FakeLink>
+            <br />
             Use the customizer to create your favourite pizza.
           </Paragraph>
           <ToppingsList
             selection={selection}
             updateSelection={updateSelection}
           />
-          <Button onClick={props.previousStep}>change address</Button>
-          <Button onClick={props.nextStep} appearance="primary">
-            see cart
-          </Button>
+          <Button appearance="primary">Add to cart</Button>
+          <Button onClick={props.nextStep}>see cart</Button>
         </ContentBox>
         <ContentBox>
           <Preview size={selection.size.name}>
@@ -73,7 +87,7 @@ export const PizzaSelection: React.FC<Partial<
                 }
                 key={sizes[size].name}
                 alt={sizes[size].name}
-                onClick={() => updateSelection(sizes[size], "size")}
+                onClick={() => updateSelection(sizes[size])}
               />
             ))}
           </SizeSelector>
@@ -86,6 +100,7 @@ export const PizzaSelection: React.FC<Partial<
 const Preview = styled.div`
   margin-top: 20px;
   position: relative;
+  height: 35vh;
   max-height: 35vh;
   transform: scale(
     ${({ size }: { size: string }) =>

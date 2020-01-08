@@ -81,6 +81,17 @@ export const Label = styled.p`
   color: ${colors.default.base};
   margin: 0 0 4px 0;
 `;
+export const FakeLink = styled.span`
+  ${fonts.Paragraph};
+  text-decoration: underline;
+  cursor: pointer;
+  color: ${colors.primary.base};
+  transition: all 0.2s ease-in-out;
+  &:hover,
+  &:focus {
+    opacity: 0.9;
+  }
+`;
 
 export const ErrorHolder = styled.p`
   ${fonts.Helper};
