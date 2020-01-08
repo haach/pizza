@@ -16,15 +16,19 @@ import { toppingsImages } from "../assets/toppings";
 import { Item } from "../utils/sharedTypes";
 import sizeIcon from "../assets/sizeIcon.svg";
 import sizeIcon_active from "../assets/sizeIcon_active.svg";
+import { addItemToStorage } from "../services/storageService";
+import shortid from "shortid";
+
+const initialState = {
+  size: sizes.medium,
+  toppings: {} as { [id: string]: Item },
+  totalPrice: sizes.medium.price
+};
 
 export const PizzaSelection: React.FC<Partial<
   StepWizardChildProps
 >> = props => {
-  const [selection, setSelection] = useState({
-    size: sizes.medium,
-    toppings: {} as { [id: string]: Item },
-    totalPrice: sizes.medium.price
-  });
+  const [selection, setSelection] = useState(initialState);
   const updateSelection = (item: Item | string) => {
     let updatedSelection = { ...selection };
     if (typeof item !== "string") {
@@ -46,6 +50,17 @@ export const PizzaSelection: React.FC<Partial<
         .reduce((a, b) => a + b, 0);
     setSelection(updatedSelection);
   };
+  const addToCart = () => {
+    addItemToStorage(
+      {
+        id: shortid.generate(),
+        selection
+      },
+      "cart"
+    )
+      .then(() => setSelection(initialState))
+      .catch(err => console.log(err));
+  };
   return (
     <WizardStep>
       <SplitView>
@@ -61,7 +76,9 @@ export const PizzaSelection: React.FC<Partial<
             selection={selection}
             updateSelection={updateSelection}
           />
-          <Button appearance="primary">Add to cart</Button>
+          <Button appearance="primary" onClick={() => addToCart()}>
+            Add to cart
+          </Button>
           <Button onClick={props.nextStep}>see cart</Button>
         </ContentBox>
         <ContentBox>

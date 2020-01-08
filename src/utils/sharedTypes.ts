@@ -5,8 +5,11 @@ export type Item = {
 
 export interface CartItem {
   id: string;
-  size: string;
-  toppings: Item[];
+  selection: {
+    size: Item;
+    toppings: { [id: string]: Item };
+    totalPrice: number;
+  };
 }
 
 export type Address = {

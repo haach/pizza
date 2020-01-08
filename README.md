@@ -41,6 +41,7 @@ But would do in real life:
 - create more mudolar components / use component library
 - fetch sizes & toppings from backend
 - store all data in backend instead of local storage
+- group identical items in cart
 - make responsive
 - make browser & device compatible
 - have a favicon
