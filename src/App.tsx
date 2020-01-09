@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import styled from "styled-components";
 import {
@@ -11,8 +11,17 @@ import {
 } from "./components";
 import StepWizard from "react-step-wizard";
 import { colors } from "./utils/variables";
+import { readCartFromStorage } from "./services/storageService";
+import { calculateTotalPrice } from "./services/helperServices";
 
 const App: React.FC = () => {
+  const [cartState, setCartState] = useState(readCartFromStorage());
+  const [totalPrice, setTotalPrice] = useState(calculateTotalPrice(cartState));
+  const updateCartState = () => {
+    // write local storage to state and notify all components
+    setCartState(readCartFromStorage());
+    setTotalPrice(calculateTotalPrice(cartState));
+  };
   return (
     <AppContainer>
       <Helmet>
@@ -29,9 +38,17 @@ const App: React.FC = () => {
         <StepWizard className="stepWizard" isHashEnabled={true}>
           <Welcome />
           <AddressInput />
-          <PizzaSelection />
-          <Cart />
-          <Checkout />
+          <PizzaSelection
+            cartState={cartState}
+            totalPrice={totalPrice}
+            updateCartState={() => updateCartState()}
+          />
+          <Cart
+            cartState={cartState}
+            totalPrice={totalPrice}
+            updateCartState={() => updateCartState()}
+          />
+          <Checkout totalPrice={totalPrice} />
         </StepWizard>
       </Card>
     </AppContainer>
@@ -43,7 +60,7 @@ export default App;
 const AppContainer = styled.div`
   width: 100vw;
   height: 100vh;
-  padding: 10vh 10vw;
+  padding: 8vh 10vw;
   position: relative;
 `;
 const Card = styled.div`

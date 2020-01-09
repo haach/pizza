@@ -8,7 +8,8 @@ import {
   Paragraph,
   Label,
   FormSection,
-  SplitView
+  SplitView,
+  ButtonBar
 } from "./styledComponents";
 import { Form, Field } from "react-final-form";
 import { Input } from "./FormComponents";
@@ -38,15 +39,15 @@ export const AddressInput: React.FC<Partial<StepWizardChildProps>> = props => {
     console.log('form', form); */
   };
   return (
-    <WizardStep>
-      <SplitView>
-        <ContentBox>
-          <Heading2>Delivery address</Heading2>
-          {/* <Paragraph>Where should we deliver your pizza?</Paragraph> */}
-          <Form
-            onSubmit={(values, form) => onSubmit(values, form)}
-            render={({ handleSubmit, form, submitting, pristine, values }) => (
-              <form onSubmit={handleSubmit}>
+    <Form
+      onSubmit={(values, form) => onSubmit(values, form)}
+      render={({ handleSubmit, form, submitting, pristine, values }) => (
+        <form onSubmit={handleSubmit}>
+          <WizardStep>
+            <SplitView>
+              <ContentBox>
+                <Heading2>Delivery address</Heading2>
+                {/* <Paragraph>Where should we deliver your pizza?</Paragraph> */}
                 <Label>Name</Label>
                 <FormSection>
                   <Field
@@ -94,27 +95,35 @@ export const AddressInput: React.FC<Partial<StepWizardChildProps>> = props => {
                     validate={composeValidators(required, mustBeNumber)}
                   />
                 </FormSection>
-                <Button type="submit" appearance="primary">
-                  Submit
-                </Button>
-              </form>
-            )}
-          />
-        </ContentBox>
-        <ContentBox>
-          <Lottie
-            options={{
-              animationData: poi_jump
-            }}
-          />
-          <Button onClick={props.nextStep} appearance="primary">
-            create pizza
-          </Button>
-          <Button onClick={props.previousStep} type="button">
-            back
-          </Button>
-        </ContentBox>
-      </SplitView>
-    </WizardStep>
+              </ContentBox>
+              <ContentBox>
+                <Lottie
+                  options={{
+                    animationData: poi_jump
+                  }}
+                  width={300}
+                />
+              </ContentBox>
+            </SplitView>
+
+            <ButtonBar>
+              <Button type="submit" appearance="primary">
+                Submit
+              </Button>
+              <Button
+                onClick={props.nextStep}
+                appearance="primary"
+                type="button"
+              >
+                create pizza
+              </Button>
+              <Button onClick={props.previousStep} type="button">
+                back
+              </Button>
+            </ButtonBar>
+          </WizardStep>
+        </form>
+      )}
+    />
   );
 };

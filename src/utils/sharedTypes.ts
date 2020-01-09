@@ -1,3 +1,5 @@
+import { StepWizardChildProps } from "react-step-wizard";
+
 export type Item = {
   name: string;
   price: number;
@@ -23,4 +25,10 @@ export interface User {
   name: string;
   address: Address;
   phone: number;
+}
+
+export interface StatefulWizardStepProps extends Partial<StepWizardChildProps> {
+  cartState?: CartItem[];
+  totalPrice: number;
+  updateCartState?: () => void;
 }

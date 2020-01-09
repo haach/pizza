@@ -23,3 +23,9 @@ export const addItemToStorage = (
       resolve("success");
     } else reject("error");
   });
+
+export const readCartFromStorage = (): CartItem[] =>
+  JSON.parse(localStorage.getItem("cart") || "[]");
+
+export const readUserFromStorage = (): User | undefined =>
+  JSON.parse(localStorage.getItem("user") || "undefined");

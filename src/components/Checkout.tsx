@@ -1,6 +1,5 @@
 import React from "react";
 import { WizardStep } from "./";
-import { StepWizardChildProps } from "react-step-wizard";
 import {
   Button,
   Heading2,
@@ -8,8 +7,9 @@ import {
   ContentBox,
   Paragraph
 } from "./styledComponents";
+import { StatefulWizardStepProps } from "../utils/sharedTypes";
 
-export const Checkout: React.FC<Partial<StepWizardChildProps>> = props => {
+export const Checkout: React.FC<StatefulWizardStepProps> = props => {
   const checkout = () => {
     console.log("order completetd");
     // use hook for show loading state

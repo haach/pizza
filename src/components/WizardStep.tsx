@@ -10,4 +10,6 @@ export const WizardStep: React.FC = ({ children }: WizardStepProps) =>
 const StepContainer = styled.div`
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 `;

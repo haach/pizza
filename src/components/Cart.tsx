@@ -1,15 +1,16 @@
 import React from "react";
-import { WizardStep } from "./";
-import { StepWizardChildProps } from "react-step-wizard";
+import { WizardStep, CartList } from "./";
 import {
   Button,
   SplitView,
   ContentBox,
   Heading2,
-  Paragraph
+  Paragraph,
+  ButtonBar
 } from "./styledComponents";
+import { StatefulWizardStepProps } from "../utils/sharedTypes";
 
-export const Cart: React.FC<Partial<StepWizardChildProps>> = props => {
+export const Cart: React.FC<StatefulWizardStepProps> = props => {
   return (
     <WizardStep>
       <SplitView>
@@ -19,13 +20,22 @@ export const Cart: React.FC<Partial<StepWizardChildProps>> = props => {
             This is your current selection of pizza. <br />
             You can either add more pizza to your cart or go to checkout.
           </Paragraph>
-          <Button onClick={props.previousStep}>more pizza</Button>
-          <Button onClick={props.nextStep} appearance="primary">
-            checkout
-          </Button>
         </ContentBox>
-        <div>Pizza creator here</div>
+        {props.cartState && (
+          <ContentBox>
+            <CartList
+              cartState={props.cartState}
+              totalPrice={props.totalPrice || 0}
+            />
+          </ContentBox>
+        )}
       </SplitView>
+      <ButtonBar>
+        <Button onClick={props.previousStep}>more pizza</Button>
+        <Button onClick={props.nextStep} appearance="primary">
+          go to checkout
+        </Button>
+      </ButtonBar>
     </WizardStep>
   );
 };

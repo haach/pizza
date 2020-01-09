@@ -39,6 +39,7 @@ But would do in real life:
 
 - write tests
 - create more mudolar components / use component library
+- write animations using a framework instead of keyframes & optimize them
 - fetch sizes & toppings from backend
 - store all data in backend instead of local storage
 - group identical items in cart

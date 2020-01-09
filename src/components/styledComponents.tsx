@@ -13,7 +13,7 @@ export const Button = styled.button`
   color: ${colors.default.base};
   opacity: 1;
   transition: all 0.2s ease-in-out;
-  margin: 0 25px 15px 0;
+  margin: 0 25px 0 0;
 
   ${({ appearance }: { appearance?: string }) =>
     appearance &&
@@ -29,7 +29,11 @@ export const Button = styled.button`
     opacity: 0.9;
   }
 `;
-
+export const ButtonBar = styled.div`
+  display: block;
+  flex-grow: 0;
+  padding: 25px 45px;
+`;
 export const FormSection = styled.div`
   display: flex;
   > * {
@@ -103,7 +107,7 @@ export const ErrorHolder = styled.p`
 
 // ================= LAYOUT ===================
 export const SplitView = styled.div`
-  height: 100%;
+  flex-grow: 1;
   display: flex;
   flex-direction: row;
   align-items: ${({ centered }: { centered?: boolean }) =>

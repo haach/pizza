@@ -43,7 +43,7 @@ export const ToppingsList: React.FC<ToppingsListProps> = ({
         </ListItem>
       ))}
       <ListItem>
-        <Name>total</Name>
+        <Name>Total</Name>
         <Price>{selection.totalPrice} €</Price>
       </ListItem>
     </div>

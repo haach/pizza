@@ -8,12 +8,13 @@ import {
   Heading2,
   Paragraph,
   Label,
-  FakeLink
+  FakeLink,
+  ButtonBar
 } from "./styledComponents";
 import styled from "styled-components";
 import { toppings, sizes } from "../utils/pizzaData";
 import { toppingsImages } from "../assets/toppings";
-import { Item } from "../utils/sharedTypes";
+import { Item, CartItem, StatefulWizardStepProps } from "../utils/sharedTypes";
 import sizeIcon from "../assets/sizeIcon.svg";
 import sizeIcon_active from "../assets/sizeIcon_active.svg";
 import { addItemToStorage } from "../services/storageService";
@@ -25,9 +26,7 @@ const initialState = {
   totalPrice: sizes.medium.price
 };
 
-export const PizzaSelection: React.FC<Partial<
-  StepWizardChildProps
->> = props => {
+export const PizzaSelection: React.FC<StatefulWizardStepProps> = props => {
   const [selection, setSelection] = useState(initialState);
   const updateSelection = (item: Item | string) => {
     let updatedSelection = { ...selection };
@@ -58,7 +57,10 @@ export const PizzaSelection: React.FC<Partial<
       },
       "cart"
     )
-      .then(() => setSelection(initialState))
+      .then(() => {
+        props.updateCartState && props.updateCartState();
+        setSelection(initialState);
+      })
       .catch(err => console.log(err));
   };
   return (
@@ -76,10 +78,6 @@ export const PizzaSelection: React.FC<Partial<
             selection={selection}
             updateSelection={updateSelection}
           />
-          <Button appearance="primary" onClick={() => addToCart()}>
-            Add to cart
-          </Button>
-          <Button onClick={props.nextStep}>see cart</Button>
         </ContentBox>
         <ContentBox>
           <Preview size={selection.size.name}>
@@ -110,6 +108,18 @@ export const PizzaSelection: React.FC<Partial<
           </SizeSelector>
         </ContentBox>
       </SplitView>
+
+      <ButtonBar>
+        <Button appearance="primary" onClick={() => addToCart()}>
+          Add to cart
+        </Button>
+        {props.cartState && props.cartState.length > 0 && (
+          <Button onClick={props.nextStep}>
+            see {props.cartState.length}
+            {props.cartState.length > 1 ? " items" : " item"} cart
+          </Button>
+        )}
+      </ButtonBar>
     </WizardStep>
   );
 };
@@ -140,7 +150,7 @@ const Topping = styled.img`
   opacity: ${({ isVisible }: { isVisible: boolean }) => (isVisible ? 1 : 0)};
 `;
 const SizeSelector = styled.div`
-  padding-top: 30px;
+  padding-top: 15px;
   text-align: center;
 `;
 const SizeIcon = styled.img`
