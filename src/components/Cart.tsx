@@ -22,19 +22,24 @@ export const Cart: React.FC<StatefulWizardStepProps> = props => {
           </Paragraph>
         </ContentBox>
         {props.cartState && (
-          <ContentBox>
+          <ContentBox scrollable={true}>
             <CartList
               cartState={props.cartState}
               totalPrice={props.totalPrice || 0}
+              updateCartState={() =>
+                props.updateCartState && props.updateCartState()
+              }
             />
           </ContentBox>
         )}
       </SplitView>
       <ButtonBar>
         <Button onClick={props.previousStep}>more pizza</Button>
-        <Button onClick={props.nextStep} appearance="primary">
-          go to checkout
-        </Button>
+        {props.cartState && props.cartState.length > 0 && (
+          <Button onClick={props.nextStep} appearance="primary">
+            go to checkout
+          </Button>
+        )}
       </ButtonBar>
     </WizardStep>
   );

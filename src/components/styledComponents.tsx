@@ -110,6 +110,7 @@ export const SplitView = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: row;
+  max-height: 100%;
   align-items: ${({ centered }: { centered?: boolean }) =>
     centered ? "center" : "flex-start"};
   > * {
@@ -118,4 +119,10 @@ export const SplitView = styled.div`
 `;
 export const ContentBox = styled.div`
   padding: 25px 45px;
+  ${({ scrollable }: { scrollable?: boolean }) =>
+    scrollable &&
+    css`
+      max-height: 100%;
+      overflow: auto;
+    `}
 `;

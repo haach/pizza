@@ -19,8 +19,9 @@ const App: React.FC = () => {
   const [totalPrice, setTotalPrice] = useState(calculateTotalPrice(cartState));
   const updateCartState = () => {
     // write local storage to state and notify all components
-    setCartState(readCartFromStorage());
-    setTotalPrice(calculateTotalPrice(cartState));
+    const newState = readCartFromStorage();
+    setCartState(newState);
+    setTotalPrice(calculateTotalPrice(newState));
   };
   return (
     <AppContainer>
@@ -100,7 +101,7 @@ const Triangle = styled.div`
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 0 0 110vw 110vw;
+    border-width: 0 0 107.8vw 107.8vw;
     border-color: transparent transparent transparent #fff;
   }
 `;

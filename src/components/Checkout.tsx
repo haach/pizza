@@ -5,7 +5,8 @@ import {
   Heading2,
   SplitView,
   ContentBox,
-  Paragraph
+  Paragraph,
+  ButtonBar
 } from "./styledComponents";
 import { StatefulWizardStepProps } from "../utils/sharedTypes";
 
@@ -23,17 +24,15 @@ export const Checkout: React.FC<StatefulWizardStepProps> = props => {
       <SplitView>
         <ContentBox>
           <Heading2>Checkout</Heading2>
-          <Paragraph>
-            Please enter your credit card data and <br />
-            You can either add more pizza to your cart or go to checkout.
-          </Paragraph>
-          <Button onClick={props.previousStep}>edit order</Button>
-          <Button onClick={() => checkout()} appearance="primary">
-            order now
-          </Button>
+          <Paragraph>Please enter your credit card data.</Paragraph>
         </ContentBox>
-        <div>Pizza creator here</div>
       </SplitView>
+      <ButtonBar>
+        <Button onClick={props.previousStep}>edit order</Button>
+        <Button onClick={() => checkout()} appearance="primary">
+          order now
+        </Button>
+      </ButtonBar>
     </WizardStep>
   );
 };

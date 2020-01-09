@@ -21,7 +21,22 @@ export const addItemToStorage = (
       }
       localStorage.setItem(key, JSON.stringify(newVal));
       resolve("success");
-    } else reject("error");
+    } else
+      reject("There was an error while trying to add this item to the storage");
+  });
+
+export const deleteItemFromStorage = (id: string): Promise<string> =>
+  new Promise<string>((resolve, reject) => {
+    if (id && localStorage && localStorage.getItem("cart")) {
+      let updatedCart = JSON.parse(localStorage.getItem("cart") || "").filter(
+        (item: CartItem) => item.id !== id
+      );
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      resolve("success");
+    } else
+      reject(
+        "There was an error while trying to delete this item from the storage"
+      );
   });
 
 export const readCartFromStorage = (): CartItem[] =>
