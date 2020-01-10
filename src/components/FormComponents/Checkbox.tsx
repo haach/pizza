@@ -11,7 +11,7 @@ interface CheckboxProps {
 export const Checkbox: React.FC<any> = ({ checked, name }: CheckboxProps) => {
   return (
     <StyledCheckbox name={name} checked={checked}>
-      {checked && <img src={checkmark} />}
+      {checked && <img src={checkmark} alt="checked" />}
     </StyledCheckbox>
   );
 };

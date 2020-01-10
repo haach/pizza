@@ -1,5 +1,5 @@
 import React from "react";
-import { Label, Bold, ErrorHolder, Lead, Paragraph } from "./styledComponents";
+import { Label, Bold, Paragraph } from "./styledComponents";
 import styled, { css } from "styled-components";
 import { colors } from "../utils/variables";
 import { CartItem } from "../utils/sharedTypes";

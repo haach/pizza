@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { WizardStep, ToppingsList } from "./";
-import { StepWizardChildProps } from "react-step-wizard";
 import {
   Button,
   SplitView,
@@ -14,7 +13,7 @@ import {
 import styled from "styled-components";
 import { toppings, sizes } from "../utils/pizzaData";
 import { toppingsImages } from "../assets/toppings";
-import { Item, CartItem, StatefulWizardStepProps } from "../utils/sharedTypes";
+import { Item, StatefulWizardStepProps } from "../utils/sharedTypes";
 import sizeIcon from "../assets/sizeIcon.svg";
 import sizeIcon_active from "../assets/sizeIcon_active.svg";
 import {

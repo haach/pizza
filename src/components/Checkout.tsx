@@ -11,9 +11,7 @@ import {
   Label
 } from "./styledComponents";
 import { StatefulWizardStepProps } from "../utils/sharedTypes";
-import { Field, Form } from "react-final-form";
 import { Input } from "./FormComponents";
-import { render } from "@testing-library/react";
 
 interface CheckoutFormState {
   cardNumber?: number;
@@ -27,9 +25,10 @@ export const Checkout: React.FC<StatefulWizardStepProps> = props => {
     experationDate: undefined,
     securityCode: undefined
   } as CheckoutFormState);
-  const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
+  const handleChange = (event: React.FormEvent<HTMLFormElement>) => {
     const target = event.target as HTMLInputElement;
-    setFormState({ ...formState, [target.name]: target.value });
+    const newState = { ...formState, [target.name]: target.value };
+    setFormState(newState);
   };
 
   const checkout = (event: React.FormEvent<HTMLFormElement>) => {
@@ -42,62 +41,50 @@ export const Checkout: React.FC<StatefulWizardStepProps> = props => {
     // go back to step 0
   };
   return (
-    <Form
-      onSubmit={checkout}
-      render={({ handleSubmit, form, submitting, pristine, values }) => (
-        <form onSubmit={handleSubmit}>
-          {console.log("formState", formState)}
-          <WizardStep>
-            <SplitView>
-              <ContentBox>
-                <Heading2>Checkout</Heading2>
-                <Paragraph>Please enter your credit card data.</Paragraph>
-                <Label>Credit card number</Label>
-                <FormSection>
-                  <Field
-                    name="cardNumber"
-                    required={true}
-                    type="text"
-                    placeholder="Credit card number"
-                    component={Input}
-                    onChange={handleChange}
-                  />
-                </FormSection>
-                <Label>Expiration date</Label>
-                <FormSection>
-                  <Field
-                    placeholder="MM/YY"
-                    onChange={handleChange}
-                    name="experationDate"
-                    value={formState.experationDate}
-                    required={true}
-                    component={Input}
-                  />
-                </FormSection>
-                <Label>Security Code</Label>
-                <FormSection>
-                  <Field
-                    placeholder="123"
-                    onChange={handleChange}
-                    name="securityCode"
-                    value={formState.securityCode}
-                    required={true}
-                    component={Input}
-                  />
-                </FormSection>
-              </ContentBox>
-            </SplitView>
-            <ButtonBar>
-              <Button onClick={props.previousStep} type="button">
-                edit order
-              </Button>
-              <Button appearance="primary" type="submit">
-                place order for {props.totalPrice}€
-              </Button>
-            </ButtonBar>
-          </WizardStep>
-        </form>
-      )}
-    />
+    <form onSubmit={checkout} onChange={handleChange}>
+      <WizardStep>
+        <SplitView>
+          <ContentBox>
+            <Heading2>Checkout</Heading2>
+            <Paragraph>Please enter your credit card data.</Paragraph>
+            <Label>Credit card number</Label>
+            <FormSection>
+              <Input
+                name="cardNumber"
+                required={true}
+                type="text"
+                placeholder="Credit card number"
+              />
+            </FormSection>
+            <Label>Expiration date</Label>
+            <FormSection>
+              <Input
+                placeholder="MM/YY"
+                name="experationDate"
+                value={formState.experationDate}
+                required={true}
+              />
+            </FormSection>
+            <Label>Security Code</Label>
+            <FormSection>
+              <Input
+                placeholder="123"
+                name="securityCode"
+                value={formState.securityCode}
+                required={true}
+              />
+            </FormSection>
+          </ContentBox>
+        </SplitView>
+        <ButtonBar>
+          <Button onClick={props.previousStep} type="button">
+            edit order
+          </Button>
+          <Button appearance="primary" type="submit">
+            place order for {props.totalPrice}€
+          </Button>
+        </ButtonBar>
+      </WizardStep>
+    </form>
   );
 };
