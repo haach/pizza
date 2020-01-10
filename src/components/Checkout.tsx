@@ -8,9 +8,7 @@ import {
   Paragraph,
   ButtonBar,
   FormSection,
-  Label,
-  Heading3,
-  Lead
+  Label
 } from "./styledComponents";
 import { StatefulWizardStepProps } from "../utils/sharedTypes";
 import { Input } from "./FormComponents";

@@ -15,11 +15,15 @@ I cannot design something completely new from scratch for two good reasons:
 <li>I am a developer</li>
 </ol>
 
-So I decided to make this more of a real life example, where I would have design to follow and did a deep dive into dribble, behance and pinterest for inspirations. I dicided to use this [design](https://www.behance.net/gallery/81662745/Website-Header-Concept-Designs), because it matched the wizard-like app, I wanted to create.
+So I decided to make this more of a real life example, where I would have a design to follow and so I did a deep dive into dribble, behance and pinterest for inspirations. This [design](https://www.behance.net/gallery/81662745/Website-Header-Concept-Designs) seemed fitting, because it matched the wizard-like app, I wanted to create.
 
-At first I thought about using a react ui component libraries, like Evergreen, but eventually decided to create my components myself, because I wanted full control over their behaviour and I only needed a very limited amount of elements.
+At first I thought about using a react ui component library, like Evergreen, but eventually decided to create my components myself, because I wanted full control over their behaviour and I only needed a very limited amount of elements.
 
-Because I wanted to use some nice animations, I replaced the photo with this [pizza illustration](https://www.freepik.com/free-vector/pizza-slice-background_1168758.htm#page=1&query=pizza&position=46) from freepik. The (pizza mockup)[https://www.freepik.com/free-vector/colorful-round-tasty-pizza_3799722.htm] that i used for the creator is also from freepik. The challenge right away reminded me of this game I had in the early 2000s, [pizza connection 2](https://store.steampowered.com/app/599000/Pizza_Connection_2/). As a little homage, I wanted the pizza creator to go bit into that direction. The [tiny icon](https://thenounproject.com/search/?q=pizza&i=1746127) for the size collection is from noun project.
+Because I wanted to use some nice animations, I replaced the photo with this [pizza illustration](https://www.freepik.com/free-vector/pizza-slice-background_1168758.htm#page=1&query=pizza&position=46) from freepik. The [pizza mockup](https://www.freepik.com/free-vector/colorful-round-tasty-pizza_3799722.htm) that i used for the creator is also from freepik.
+
+This challenge right away reminded me of this game I had in the early 2000s, [pizza connection 2](https://store.steampowered.com/app/599000/Pizza_Connection_2/). As a little homage, I wanted the pizza creator to go bit into that direction. The [tiny icon](https://thenounproject.com/search/?q=pizza&i=1746127) for the size collection is from noun project.
+
+<hr></hr>
 
 ## 💻 Implementation
 
@@ -31,11 +35,17 @@ I used several npm modules:
 
 [styled-components](https://www.styled-components.com/): Well you know styled components
 
-[]():
+[husky](https://github.com/typicode/husky#readme), [prettier](https://github.com/prettier/prettier) and [pretty-quick](https://github.com/azz/pretty-quick): For code formatting
 
-### What I did not do
+[shortid](https://github.com/dylang/shortid): to generate UUIDs for cart items
 
-But would do in real life:
+[react-spinners](https://github.com/davidhu2000/react-spinners): Is a package of easy to use loading spinners
+
+[lottie-react-web](https://github.com/felippenardi/lottie-react-web): Is a react wrapper for Bodymovin Animations
+
+<hr></hr>
+
+### What I did not do, but would have in real life:
 
 - write tests
 - create more mudolar components / use component library
