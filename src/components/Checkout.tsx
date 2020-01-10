@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { WizardStep, CartList } from "./";
 import {
   Button,
@@ -31,26 +31,33 @@ export const Checkout: React.FC<StatefulWizardStepProps> = props => {
     experationDate: undefined,
     securityCode: undefined
   } as CheckoutFormState);
-  const handleChange = (event: React.FormEvent<HTMLFormElement>) => {
-    const target = event.target as HTMLInputElement;
-    const newState = { ...formState, [target.name]: target.value };
-    setFormState(newState);
-  };
 
-  const checkout = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    console.log("order completetd");
-    setCheckoutState("loading");
-    setTimeout(() => setCheckoutState("success"), 1500);
-    setTimeout(() => {
-      deleteCartFromStorage();
-      props.goToStep && props.goToStep(1);
-      setCheckoutState("initial");
-      props.updateCartState();
-    }, 8000);
-  };
+  const handleChange = useCallback(
+    (event: React.FormEvent<HTMLInputElement>) => {
+      const target = event.target as HTMLInputElement;
+      const newState = { ...formState, [target.name]: target.value };
+      setFormState(newState);
+    },
+    [formState]
+  );
+
+  const checkout = useCallback(
+    (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      setCheckoutState("loading");
+      setTimeout(() => setCheckoutState("success"), 1500);
+      setTimeout(() => {
+        deleteCartFromStorage();
+        props.goToStep && props.goToStep(1);
+        setCheckoutState("initial");
+        props.updateCartState();
+      }, 8000);
+    },
+    [props]
+  );
+
   return (
-    <form onSubmit={checkout} onChange={handleChange}>
+    <form onSubmit={checkout}>
       <WizardStep>
         <SplitView>
           {checkOutState !== "success" && (
@@ -64,6 +71,7 @@ export const Checkout: React.FC<StatefulWizardStepProps> = props => {
                   required={true}
                   type="text"
                   placeholder="Credit card number"
+                  onChange={handleChange}
                 />
               </FormSection>
               <Label>Expiration date</Label>
@@ -73,6 +81,7 @@ export const Checkout: React.FC<StatefulWizardStepProps> = props => {
                   name="experationDate"
                   value={formState.experationDate}
                   required={true}
+                  onChange={handleChange}
                 />
               </FormSection>
               <Label>Security Code</Label>
@@ -82,6 +91,7 @@ export const Checkout: React.FC<StatefulWizardStepProps> = props => {
                   name="securityCode"
                   value={formState.securityCode}
                   required={true}
+                  onChange={handleChange}
                 />
               </FormSection>
             </ContentBox>

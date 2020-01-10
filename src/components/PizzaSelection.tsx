@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { WizardStep, ToppingsList } from "./";
 import {
   Button,
@@ -31,28 +31,34 @@ const initialState = {
 export const PizzaSelection: React.FC<StatefulWizardStepProps> = props => {
   const [selection, setSelection] = useState(initialState);
   const user = readUserFromStorage();
-  const updateSelection = (item: Item | string) => {
-    let updatedSelection = { ...selection };
-    if (typeof item !== "string") {
-      // size
-      updatedSelection.size = item;
-    } else {
-      // topping
-      selection.toppings[item]
-        ? delete updatedSelection.toppings[item]
-        : (updatedSelection.toppings = {
-            ...updatedSelection.toppings,
-            [item]: toppings[item]
-          });
-    }
-    updatedSelection.totalPrice =
-      updatedSelection.size.price +
-      Object.keys(updatedSelection.toppings)
-        .map(id => updatedSelection.toppings[id].price)
-        .reduce((a, b) => a + b, 0);
-    setSelection(updatedSelection);
-  };
-  const addToCart = () => {
+
+  const updateSelection = useCallback(
+    (item: Item | string) => {
+      let updatedSelection = { ...selection };
+      if (typeof item !== "string") {
+        // size
+        updatedSelection.size = item;
+      } else {
+        // topping
+        selection.toppings[item]
+          ? delete updatedSelection.toppings[item]
+          : (updatedSelection.toppings = {
+              ...updatedSelection.toppings,
+              [item]: toppings[item]
+            });
+      }
+      updatedSelection.totalPrice =
+        updatedSelection.size.price +
+        Object.keys(updatedSelection.toppings).reduce(
+          (a, b) => a + updatedSelection.toppings[b].price,
+          0
+        );
+      setSelection(updatedSelection);
+    },
+    [selection]
+  );
+
+  const addToCart = useCallback(() => {
     addItemToStorage(
       {
         id: shortid.generate(),
@@ -65,7 +71,8 @@ export const PizzaSelection: React.FC<StatefulWizardStepProps> = props => {
         setSelection(initialState);
       })
       .catch(err => console.log(err));
-  };
+  }, [selection, props]);
+
   return (
     <WizardStep>
       <SplitView>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { WizardStep } from "./";
 import { StepWizardChildProps } from "react-step-wizard";
 import {
@@ -22,18 +22,27 @@ import { Input } from "./FormComponents";
 
 export const AddressInput: React.FC<Partial<StepWizardChildProps>> = props => {
   const [formState, setFormState] = useState(readUserFromStorage());
-  const handleChange = (event: React.FormEvent<HTMLFormElement>) => {
-    const target = event.target as HTMLInputElement;
-    const newState = { ...formState, [target.name]: target.value };
-    setFormState(newState as User);
-  };
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    addItemToStorage(formState as User, "user");
-    props.nextStep && props.nextStep();
-  };
+
+  const handleChange = useCallback(
+    (event: React.FormEvent<HTMLInputElement>) => {
+      const target = event.target as HTMLInputElement;
+      const newState = { ...formState, [target.name]: target.value };
+      setFormState(newState as User);
+    },
+    [formState]
+  );
+
+  const onSubmit = useCallback(
+    (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      addItemToStorage(formState as User, "user");
+      props.nextStep && props.nextStep();
+    },
+    [formState, props]
+  );
+
   return (
-    <form onSubmit={onSubmit} onChange={handleChange}>
+    <form onSubmit={onSubmit}>
       <WizardStep>
         <SplitView>
           <ContentBox>
@@ -46,6 +55,7 @@ export const AddressInput: React.FC<Partial<StepWizardChildProps>> = props => {
                 placeholder="Name"
                 required={true}
                 value={formState && formState.name}
+                onChange={handleChange}
               />
             </FormSection>
             <Label>Address</Label>
@@ -55,12 +65,14 @@ export const AddressInput: React.FC<Partial<StepWizardChildProps>> = props => {
                 placeholder="Street name"
                 required={true}
                 value={formState && formState.streetName}
+                onChange={handleChange}
               />
               <Input
                 name="houseNumber"
                 placeholder="House number"
                 required={true}
                 value={formState && formState.houseNumber}
+                onChange={handleChange}
               />
             </FormSection>
             <FormSection>
@@ -69,12 +81,14 @@ export const AddressInput: React.FC<Partial<StepWizardChildProps>> = props => {
                 placeholder="Postal code"
                 required={true}
                 value={formState && formState.postalCode}
+                onChange={handleChange}
               />
               <Input
                 name="city"
                 placeholder="City"
                 required={true}
                 value={formState && formState.city}
+                onChange={handleChange}
               />
             </FormSection>
             <Label>Phone number</Label>
@@ -84,6 +98,7 @@ export const AddressInput: React.FC<Partial<StepWizardChildProps>> = props => {
                 placeholder="Phone number"
                 required={true}
                 value={formState && formState.phone}
+                onChange={handleChange}
               />
             </FormSection>
           </ContentBox>

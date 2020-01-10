@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { Helmet } from "react-helmet";
 import styled from "styled-components";
 import {
@@ -17,12 +17,12 @@ import { calculateTotalPrice } from "./services/helperServices";
 const App: React.FC = () => {
   const [cartState, setCartState] = useState(readCartFromStorage());
   const [totalPrice, setTotalPrice] = useState(calculateTotalPrice(cartState));
-  const updateCartState = () => {
+  const updateCartState = useCallback(() => {
     // write local storage to state and notify all components
     const newState = readCartFromStorage();
     setCartState(newState);
     setTotalPrice(calculateTotalPrice(newState));
-  };
+  }, []);
   return (
     <AppContainer>
       <Helmet>

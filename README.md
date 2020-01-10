@@ -8,6 +8,12 @@ This is best viewed in Chrome or Firefox on a screen min 1440 x 900.
 
 Here is a [time table](https://docs.google.com/document/d/1h9ARwv-4VWCHXfX8YGY0lGlcwZYuD7upSbrNrW5LhnA/edit?usp=sharing) of what I spent how much time more or less.
 
+To start:
+
+```
+yarn start
+```
+
 ## 🎨 Design inspiration
 
 I cannot design something completely new from scratch for two good reasons:
@@ -57,7 +63,7 @@ I used several npm modules:
 - group identical items in cart
 - have better validation in forms for input types
 - have actual request error handling
-- prevent user from navigating via #hash to all steps
+- prevent user from navigating via hash to all steps
 - not have hard coded text
 - make responsive
 - make browser & device compatible
