@@ -4,7 +4,9 @@ Pizza Challenge - UI focus
 
 <hr></hr>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is best viewed in Chrome or Firefox on a screen min 1440 x 900.
+
+Here is a [time table](https://docs.google.com/document/d/1h9ARwv-4VWCHXfX8YGY0lGlcwZYuD7upSbrNrW5LhnA/edit?usp=sharing) of what I spent how much time more or less.
 
 ## 🎨 Design inspiration
 

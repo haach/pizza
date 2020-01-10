@@ -47,7 +47,7 @@ export const Checkout: React.FC<StatefulWizardStepProps> = props => {
       props.goToStep && props.goToStep(1);
       setCheckoutState("initial");
       props.updateCartState();
-    }, 5000);
+    }, 8000);
   };
   return (
     <form onSubmit={checkout} onChange={handleChange}>

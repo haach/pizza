@@ -132,6 +132,7 @@ export const PizzaSelection: React.FC<StatefulWizardStepProps> = props => {
 const Preview = styled.div`
   margin-top: 20px;
   position: relative;
+  text-align: center;
   height: 35vh;
   max-height: 35vh;
   transform: scale(
