@@ -11,6 +11,10 @@ body {
   box-sizing: border-box;
 }
 
+*:focus {
+  outline: none;
+}
+
 form {
   height: 100%;
 }

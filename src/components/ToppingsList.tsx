@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { colors } from "../utils/variables";
 import { toppings } from "../utils/pizzaData";
 import { Item } from "../utils/sharedTypes";
-import { Checkbox } from "evergreen-ui";
+import { Checkbox } from "./FormComponents";
 
 interface ToppingsListProps {
   selection: {
@@ -33,11 +33,9 @@ export const ToppingsList: React.FC<ToppingsListProps> = ({
           key={toppings[topping].name}
           onClick={() => updateSelection(topping)}
         >
-          <Checkbox
-            className="checkBox"
-            checked={!!selection.toppings[topping]}
-            name={topping}
-          />
+          <CheckBoxContainer>
+            <Checkbox checked={!!selection.toppings[topping]} name={topping} />
+          </CheckBoxContainer>
           <Name>{toppings[topping].name}</Name>
           <Price>{toppings[topping].price} €</Price>
         </ListItem>
@@ -62,12 +60,13 @@ const ListItem = styled.div`
     margin-top: 2px;
     border-top: 1px solid ${colors.default.light};
   }
-  .checkBox {
-    margin: 0;
-    position: absolute;
-    top: 8px;
-    left: 0;
-  }
+`;
+
+const CheckBoxContainer = styled.div`
+  margin: 0;
+  position: absolute;
+  top: 8px;
+  left: 0;
 `;
 const Name = styled(Bold)``;
 const Description = styled(Label)``;
