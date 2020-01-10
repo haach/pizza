@@ -23,7 +23,7 @@ export interface User {
   phone: number;
 }
 export interface StatefulWizardStepProps extends Partial<StepWizardChildProps> {
-  cartState?: CartItem[];
+  cartState: CartItem[];
   totalPrice: number;
-  updateCartState?: () => void;
+  updateCartState: () => void;
 }

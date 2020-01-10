@@ -4,6 +4,7 @@ import { colors, fonts } from "../utils/variables";
 // =============== UI ELEMENTS ================
 export const Button = styled.button`
   ${fonts.Button};
+  position: relative;
   border-radius: 30px;
   padding: 15px 25px;
   text-transform: uppercase;

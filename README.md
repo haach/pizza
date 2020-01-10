@@ -44,6 +44,7 @@ But would do in real life:
 - store all data in backend instead of local storage
 - group identical items in cart
 - have better validation in forms for input types
+- have actual request error handling
 - prevent user from navigating via #hash to all steps
 - not have hard coded text
 - make responsive

@@ -26,9 +26,7 @@ export const Cart: React.FC<StatefulWizardStepProps> = props => {
             <CartList
               cartState={props.cartState}
               totalPrice={props.totalPrice || 0}
-              updateCartState={() =>
-                props.updateCartState && props.updateCartState()
-              }
+              updateCartState={() => props.updateCartState()}
             />
           </ContentBox>
         )}

@@ -22,7 +22,6 @@ import { Input } from "./FormComponents";
 
 export const AddressInput: React.FC<Partial<StepWizardChildProps>> = props => {
   const [formState, setFormState] = useState(readUserFromStorage());
-  console.log("readUserFromStorage()", readUserFromStorage());
   const handleChange = (event: React.FormEvent<HTMLFormElement>) => {
     const target = event.target as HTMLInputElement;
     const newState = { ...formState, [target.name]: target.value };
@@ -36,7 +35,6 @@ export const AddressInput: React.FC<Partial<StepWizardChildProps>> = props => {
   return (
     <form onSubmit={onSubmit} onChange={handleChange}>
       <WizardStep>
-        ^
         <SplitView>
           <ContentBox>
             <Heading2>Delivery address</Heading2>
@@ -101,9 +99,6 @@ export const AddressInput: React.FC<Partial<StepWizardChildProps>> = props => {
         <ButtonBar>
           <Button appearance="primary" type="submit">
             create pizza
-          </Button>
-          <Button onClick={props.previousStep} type="button">
-            back
           </Button>
         </ButtonBar>
       </WizardStep>

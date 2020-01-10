@@ -39,6 +39,9 @@ export const deleteItemFromStorage = (id: string): Promise<string> =>
       );
   });
 
+export const deleteCartFromStorage = (): void =>
+  localStorage.removeItem("cart");
+
 export const readCartFromStorage = (): CartItem[] =>
   JSON.parse(localStorage.getItem("cart") || "[]");
 

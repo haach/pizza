@@ -49,7 +49,11 @@ const App: React.FC = () => {
             totalPrice={totalPrice}
             updateCartState={() => updateCartState()}
           />
-          <Checkout totalPrice={totalPrice} />
+          <Checkout
+            totalPrice={totalPrice}
+            cartState={cartState}
+            updateCartState={() => updateCartState()}
+          />
         </StepWizard>
       </Card>
     </AppContainer>

@@ -9,7 +9,7 @@ import { deleteItemFromStorage } from "../services/storageService";
 interface CartListProps {
   cartState: CartItem[];
   totalPrice: number;
-  updateCartState: () => void;
+  updateCartState?: () => void;
 }
 
 export const CartList: React.FC<CartListProps> = ({
@@ -31,16 +31,18 @@ export const CartList: React.FC<CartListProps> = ({
                 {toppings.length > 0 && (
                   <Description>With {generateList(toppings)}</Description>
                 )}
-                <Description
-                  color={colors.error}
-                  onClick={() =>
-                    deleteItemFromStorage(cartItem.id)
-                      .then(() => updateCartState())
-                      .catch(err => console.log("err", err))
-                  }
-                >
-                  Delete
-                </Description>
+                {updateCartState && (
+                  <Description
+                    color={colors.error}
+                    onClick={() =>
+                      deleteItemFromStorage(cartItem.id)
+                        .then(() => updateCartState())
+                        .catch(err => console.log("err", err))
+                    }
+                  >
+                    Delete
+                  </Description>
+                )}
                 <Price>{cartItem.selection.totalPrice} €</Price>
               </ListItem>
             );
@@ -60,7 +62,7 @@ export const CartList: React.FC<CartListProps> = ({
 const ListItem = styled.div`
   cursor: pointer;
   overflow: auto;
-  padding: 5px 0 5px 30px;
+  padding: 5px 0 5px 0;
   position: relative;
   &:not(:last-child) {
     border-bottom: 1px solid ${colors.default.light};
