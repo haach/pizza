@@ -14,19 +14,14 @@ export interface CartItem {
   };
 }
 
-export type Address = {
+export interface User {
+  name: string;
   streetName: string;
   houseNumber: string;
   postalCode: number;
   city: string;
-};
-
-export interface User {
-  name: string;
-  address: Address;
   phone: number;
 }
-
 export interface StatefulWizardStepProps extends Partial<StepWizardChildProps> {
   cartState?: CartItem[];
   totalPrice: number;

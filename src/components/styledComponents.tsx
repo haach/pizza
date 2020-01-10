@@ -36,10 +36,10 @@ export const ButtonBar = styled.div`
 `;
 export const FormSection = styled.div`
   display: flex;
-  > * {
-    margin-bottom: 20px;
+  > div {
+    padding-bottom: 20px;
     &:not(:last-child) {
-      margin-right: 15px;
+      padding-right: 15px;
     }
   }
 `;

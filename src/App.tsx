@@ -101,7 +101,7 @@ const Triangle = styled.div`
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 0 0 107.8vw 107.8vw;
+    border-width: 0 0 109vw 109vw;
     border-color: transparent transparent transparent #fff;
   }
 `;

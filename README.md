@@ -45,6 +45,7 @@ But would do in real life:
 - group identical items in cart
 - have better validation in forms for input types
 - prevent user from navigating via #hash to all steps
+- not have hard coded text
 - make responsive
 - make browser & device compatible
 - have a favicon

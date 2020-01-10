@@ -26,7 +26,7 @@ export const Checkout: React.FC<StatefulWizardStepProps> = props => {
     cardNumber: undefined,
     experationDate: undefined,
     securityCode: undefined
-  });
+  } as CheckoutFormState);
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement;
     setFormState({ ...formState, [target.name]: target.value });
@@ -60,6 +60,7 @@ export const Checkout: React.FC<StatefulWizardStepProps> = props => {
                     type="text"
                     placeholder="Credit card number"
                     component={Input}
+                    onChange={handleChange}
                   />
                 </FormSection>
                 <Label>Expiration date</Label>

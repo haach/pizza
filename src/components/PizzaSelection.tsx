@@ -17,7 +17,10 @@ import { toppingsImages } from "../assets/toppings";
 import { Item, CartItem, StatefulWizardStepProps } from "../utils/sharedTypes";
 import sizeIcon from "../assets/sizeIcon.svg";
 import sizeIcon_active from "../assets/sizeIcon_active.svg";
-import { addItemToStorage } from "../services/storageService";
+import {
+  addItemToStorage,
+  readUserFromStorage
+} from "../services/storageService";
 import shortid from "shortid";
 
 const initialState = {
@@ -28,6 +31,7 @@ const initialState = {
 
 export const PizzaSelection: React.FC<StatefulWizardStepProps> = props => {
   const [selection, setSelection] = useState(initialState);
+  const user = readUserFromStorage();
   const updateSelection = (item: Item | string) => {
     let updatedSelection = { ...selection };
     if (typeof item !== "string") {
@@ -69,7 +73,9 @@ export const PizzaSelection: React.FC<StatefulWizardStepProps> = props => {
         <ContentBox>
           <Heading2>Create your pizza</Heading2>
           <Paragraph>
-            Delivery to: ADREES, ADDRESS{" "}
+            Delivery to:{" "}
+            {user &&
+              `${user.streetName} ${user.houseNumber}, ${user.postalCode} ${user.city} `}
             <FakeLink onClick={props.previousStep}>edit</FakeLink>
             <br />
             Use the customizer to create your favourite pizza.
