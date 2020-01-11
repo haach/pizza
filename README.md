@@ -55,15 +55,15 @@ I used several npm modules:
 
 ### What I did not do, but would have in real life:
 
-- create more mudolar components / use component library
-- write animations using a framework instead of keyframes & optimize them: probably using
+- create more modular components and encorporate design system / component library
+- write animations using a framework instead of keyframes & optimize them
 - fetch sizes & toppings from backend
 - store all data in backend instead of local storage
-- group identical items in cart. put a "1x" or "Xx" if the an identical item is in the cart multiple times
+- group identical items in cart. put a "2x" if an identical item is in the cart multiple times
 - have better validation for input (phone number, credit card number, MM/YY stuff like that)
 - have actual request error handling: I created promises where you would expect typical fetch to BE actions, but of course we need real error handling
 - prevent user from navigating via hash to all steps
 - do not have hard coded text: I personally prefer i18n if you are encorporating different languages
 - make responsive
 - make browser & device compatible
-- write tests: checking with jest if components render correctly
+- write tests: checking with jest if components render correctly & data is being processed correctly
