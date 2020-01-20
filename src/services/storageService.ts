@@ -12,7 +12,7 @@ export const addItemToStorage = (
       let newVal;
       if (key === "cart") {
         // concat existing items in storage
-        let prevVal = localStorage.getItem(key);
+        const prevVal = localStorage.getItem(key);
         newVal = prevVal ? JSON.parse(prevVal) : [];
         newVal.push(item);
       } else {
@@ -21,22 +21,24 @@ export const addItemToStorage = (
       }
       localStorage.setItem(key, JSON.stringify(newVal));
       resolve("success");
-    } else
+    } else {
       reject("There was an error while trying to add this item to the storage");
+    }
   });
 
 export const deleteItemFromStorage = (id: string): Promise<string> =>
   new Promise<string>((resolve, reject) => {
     if (id && localStorage && localStorage.getItem("cart")) {
-      let updatedCart = JSON.parse(localStorage.getItem("cart") || "").filter(
+      const updatedCart = JSON.parse(localStorage.getItem("cart") || "").filter(
         (item: CartItem) => item.id !== id
       );
       localStorage.setItem("cart", JSON.stringify(updatedCart));
       resolve("success");
-    } else
+    } else {
       reject(
         "There was an error while trying to delete this item from the storage"
       );
+    }
   });
 
 export const deleteCartFromStorage = (): void =>

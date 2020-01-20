@@ -5,9 +5,9 @@ import mushrooms from "./mushrooms.svg";
 import pepper from "./pepper.svg";
 
 export const toppingsImages: { [x: string]: string } = {
-  base: base,
-  olives: olives,
-  pepperoni: pepperoni,
-  mushrooms: mushrooms,
-  pepper: pepper
+  base,
+  olives,
+  pepperoni,
+  mushrooms,
+  pepper
 };
