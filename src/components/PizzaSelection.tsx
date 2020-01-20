@@ -1,5 +1,5 @@
-import React, { useState, useCallback } from "react";
-import { WizardStep, ToppingsList } from "./";
+import React, { useState, useCallback } from 'react';
+import { WizardStep, ToppingsList } from './';
 import {
   Button,
   SplitView,
@@ -9,18 +9,18 @@ import {
   Label,
   FakeLink,
   ButtonBar
-} from "./styledComponents";
-import styled from "styled-components";
-import { toppings, sizes } from "../utils/pizzaData";
-import { toppingsImages } from "../assets/toppings";
-import { Item, StatefulWizardStepProps } from "../utils/sharedTypes";
-import sizeIcon from "../assets/sizeIcon.svg";
-import sizeIcon_active from "../assets/sizeIcon_active.svg";
+} from './styledComponents';
+import styled from 'styled-components';
+import { toppings, sizes } from '../utils/pizzaData';
+import { toppingsImages } from '../assets/toppings';
+import { Item, StatefulWizardStepProps } from '../utils/sharedTypes';
+import sizeIcon from '../assets/sizeIcon.svg';
+import sizeIcon_active from '../assets/sizeIcon_active.svg';
 import {
   addItemToStorage,
   readUserFromStorage
-} from "../services/storageService";
-import shortid from "shortid";
+} from '../services/storageService';
+import shortid from 'shortid';
 
 const initialState = {
   size: sizes.medium,
@@ -35,7 +35,7 @@ export const PizzaSelection: React.FC<StatefulWizardStepProps> = props => {
   const updateSelection = useCallback(
     (item: Item | string) => {
       let updatedSelection = { ...selection };
-      if (typeof item !== "string") {
+      if (typeof item !== 'string') {
         // size
         updatedSelection.size = item;
       } else {
@@ -64,14 +64,20 @@ export const PizzaSelection: React.FC<StatefulWizardStepProps> = props => {
         id: shortid.generate(),
         selection
       },
-      "cart"
+      'cart'
     )
       .then(() => {
-        props.updateCartState && props.updateCartState();
+        props.updateCartState();
         setSelection(initialState);
       })
       .catch(err => console.log(err));
   }, [selection, props]);
+
+  const goToCart = useCallback(() => {
+    // reset form before going to the checkout
+    setSelection(initialState);
+    props.nextStep && props.nextStep();
+  }, [props]);
 
   return (
     <WizardStep>
@@ -79,7 +85,7 @@ export const PizzaSelection: React.FC<StatefulWizardStepProps> = props => {
         <ContentBox>
           <Heading2>Create your pizza</Heading2>
           <Paragraph>
-            Delivery to:{" "}
+            Delivery to:{' '}
             {user &&
               `${user.streetName} ${user.houseNumber}, ${user.postalCode} ${user.city} `}
             <FakeLink onClick={props.previousStep}>edit</FakeLink>
@@ -126,9 +132,9 @@ export const PizzaSelection: React.FC<StatefulWizardStepProps> = props => {
           Add to cart
         </Button>
         {props.cartState && props.cartState.length > 0 && (
-          <Button onClick={props.nextStep}>
+          <Button onClick={() => goToCart()}>
             see {props.cartState.length}
-            {props.cartState.length > 1 ? " items" : " item"} cart
+            {props.cartState.length > 1 ? ' items' : ' item'} cart
           </Button>
         )}
       </ButtonBar>
@@ -144,7 +150,7 @@ const Preview = styled.div`
   max-height: 35vh;
   transform: scale(
     ${({ size }: { size: string }) =>
-      size === "small" ? 0.8 : size === "medium" ? 0.9 : 1}
+      size === 'small' ? 0.8 : size === 'medium' ? 0.9 : 1}
   );
   transition: transform 0.3s ease-in-out;
 `;

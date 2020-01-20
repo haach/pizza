@@ -1,14 +1,15 @@
-import React from "react";
-import { Label, Bold, Paragraph } from "./styledComponents";
-import styled, { css } from "styled-components";
-import { colors } from "../utils/variables";
-import { CartItem } from "../utils/sharedTypes";
-import { generateList } from "../services/helperServices";
-import { deleteItemFromStorage } from "../services/storageService";
+import React from 'react';
+import { Label, Bold, Paragraph } from './styledComponents';
+import styled, { css } from 'styled-components';
+import { colors } from '../utils/variables';
+import { CartItem } from '../utils/sharedTypes';
+import { generateList } from '../services/helperServices';
+import { deleteItemFromStorage } from '../services/storageService';
 
 interface CartListProps {
   cartState: CartItem[];
   totalPrice: number;
+  // updateCartState is undefined in Checkout view
   updateCartState?: () => void;
 }
 
@@ -37,7 +38,7 @@ export const CartList: React.FC<CartListProps> = ({
                     onClick={() =>
                       deleteItemFromStorage(cartItem.id)
                         .then(() => updateCartState())
-                        .catch(err => console.log("err", err))
+                        .catch(err => console.log('err', err))
                     }
                   >
                     Delete

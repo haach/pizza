@@ -1,5 +1,5 @@
-import React, { useState, useCallback } from "react";
-import { WizardStep, CartList } from "./";
+import React, { useState, useCallback } from 'react';
+import { WizardStep, CartList } from './';
 import {
   Button,
   Heading2,
@@ -9,14 +9,14 @@ import {
   ButtonBar,
   FormSection,
   Label
-} from "./styledComponents";
-import { StatefulWizardStepProps } from "../utils/sharedTypes";
-import { Input } from "./FormComponents";
-import { deleteCartFromStorage } from "../services/storageService";
-import styled from "styled-components";
-import { BeatLoader } from "react-spinners";
-import Lottie from "lottie-react-web";
-import deliver from "../assets/lottie/delivery.json";
+} from './styledComponents';
+import { StatefulWizardStepProps } from '../utils/sharedTypes';
+import { Input } from './FormComponents';
+import { deleteCartFromStorage } from '../services/storageService';
+import styled from 'styled-components';
+import { BeatLoader } from 'react-spinners';
+import Lottie from 'lottie-react-web';
+import deliver from '../assets/lottie/delivery.json';
 
 interface CheckoutFormState {
   cardNumber?: number;
@@ -24,13 +24,17 @@ interface CheckoutFormState {
   securityCode?: number;
 }
 
+const initialFormState = {
+  cardNumber: undefined,
+  experationDate: undefined,
+  securityCode: undefined
+};
+
 export const Checkout: React.FC<StatefulWizardStepProps> = props => {
-  const [checkOutState, setCheckoutState] = useState("initial");
-  const [formState, setFormState] = useState({
-    cardNumber: undefined,
-    experationDate: undefined,
-    securityCode: undefined
-  } as CheckoutFormState);
+  const [checkOutState, setCheckoutState] = useState('initial');
+  const [formState, setFormState] = useState(
+    initialFormState as CheckoutFormState
+  );
 
   const handleChange = useCallback(
     (event: React.FormEvent<HTMLInputElement>) => {
@@ -44,12 +48,13 @@ export const Checkout: React.FC<StatefulWizardStepProps> = props => {
   const checkout = useCallback(
     (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      setCheckoutState("loading");
-      setTimeout(() => setCheckoutState("success"), 1500);
+      setCheckoutState('loading');
+      setTimeout(() => setCheckoutState('success'), 1500);
       setTimeout(() => {
         deleteCartFromStorage();
         props.goToStep && props.goToStep(1);
-        setCheckoutState("initial");
+        setCheckoutState('initial');
+        setFormState(initialFormState);
         props.updateCartState();
       }, 8000);
     },
@@ -60,7 +65,7 @@ export const Checkout: React.FC<StatefulWizardStepProps> = props => {
     <form onSubmit={checkout}>
       <WizardStep>
         <SplitView>
-          {checkOutState !== "success" && (
+          {checkOutState !== 'success' && (
             <ContentBox>
               <Heading2>Checkout</Heading2>
               <Paragraph>Please enter your credit card data.</Paragraph>
@@ -97,7 +102,7 @@ export const Checkout: React.FC<StatefulWizardStepProps> = props => {
             </ContentBox>
           )}
 
-          {checkOutState === "success" && (
+          {checkOutState === 'success' && (
             <React.Fragment>
               <ContentBox scrollable={true}>
                 <Heading2>Your pizza is on its way!</Heading2>
@@ -118,20 +123,20 @@ export const Checkout: React.FC<StatefulWizardStepProps> = props => {
             </React.Fragment>
           )}
         </SplitView>
-        {checkOutState !== "success" && (
+        {checkOutState !== 'success' && (
           <ButtonBar>
             <Button onClick={props.previousStep} type="button">
               edit order
             </Button>
             <Button appearance="primary" type="submit">
-              <ButtonText isVisible={checkOutState === "initial"}>
+              <ButtonText isVisible={checkOutState === 'initial'}>
                 place order for {props.totalPrice}€
               </ButtonText>
               <Loading>
                 <BeatLoader
-                  loading={checkOutState === "loading"}
+                  loading={checkOutState === 'loading'}
                   size={14}
-                  color={"#FFF"}
+                  color={'#FFF'}
                 />
               </Loading>
             </Button>
