@@ -4,6 +4,7 @@
     "interface-name": [true, "never-prefix"],
     "no-console": false,
     "import-name": false,
+    "no-boolean-literal-compare": false,
     "no-implicit-dependencies": [true, "dev"]
   }
 }
