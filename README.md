@@ -1,4 +1,6 @@
 # pizza
+![pizzaPreview](https://user-images.githubusercontent.com/34210193/149172090-08a71686-c7bf-407b-8bd7-b4c6df4da57a.gif)
+
 
 ⚠️ Not maintained
 🚢 deployed at [vercel](https://pizza-6r5jqrf30-haach.vercel.app/)
