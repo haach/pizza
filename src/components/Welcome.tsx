@@ -5,14 +5,13 @@ import {
   Heading3,
   ContentBox,
   Paragraph
-} from "./styledComponents";
-import { WizardStep } from "./";
-import React from "react";
-import styled from "styled-components";
-import { StepWizardChildProps } from "react-step-wizard";
-import shadow from "./../assets/shadow.svg";
-import pizza from "./../assets/pizza.svg";
-import { colors } from "../utils/variables";
+} from './styledComponents';
+import { WizardStep } from './';
+import React from 'react';
+import styled from 'styled-components';
+import { StepWizardChildProps } from 'react-step-wizard';
+import shadow from './../assets/shadow.svg';
+import pizza from './../assets/pizza.svg';
 
 export const Welcome: React.FC<Partial<StepWizardChildProps>> = props => {
   return (
@@ -33,7 +32,6 @@ export const Welcome: React.FC<Partial<StepWizardChildProps>> = props => {
           </Button>
         </ContentBox>
         <AnimationConatiner>
-          <Triangle />
           <AnimatedShadow src={shadow} alt="spooking around" />
           <AnimatedPizza src={pizza} alt="pizza is fly" />
         </AnimationConatiner>
@@ -47,27 +45,7 @@ const AnimationConatiner = styled.div`
   height: 100%;
   overflow: visible;
 `;
-const Triangle = styled.div`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(
-    to bottom,
-    ${colors.primary.lightest} 0%,
-    #ed5656 100%
-  );
-  &:after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 50vw 50vw 0 0;
-    border-color: #fff transparent transparent transparent;
-  }
-`;
+
 const AnimatedShadow = styled.img`
   position: absolute;
   opacity: 0.5;
@@ -77,6 +55,7 @@ const AnimatedShadow = styled.img`
   transform: translate(0, -45%);
   animation: flyFlat 5s linear infinite alternate-reverse;
 `;
+
 const AnimatedPizza = styled.img`
   position: absolute;
   top: 50%;

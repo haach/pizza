@@ -1,6 +1,6 @@
-import React, { useState, useCallback } from "react";
-import { Helmet } from "react-helmet";
-import styled from "styled-components";
+import React, { useState, useCallback, FC } from 'react';
+import { Helmet } from 'react-helmet';
+import styled from 'styled-components';
 import {
   AddressInput,
   Cart,
@@ -8,15 +8,20 @@ import {
   Header,
   PizzaSelection,
   Welcome
-} from "./components";
-import StepWizard from "react-step-wizard";
-import { colors } from "./utils/variables";
-import { readCartFromStorage } from "./services/storageService";
-import { calculateTotalPrice } from "./services/helperServices";
+} from './components';
+import StepWizard from 'react-step-wizard';
+import { colors } from './utils/variables';
+import { readCartFromStorage } from './services/storageService';
+import { calculateTotalPrice } from './services/helperServices';
+import { CartItem } from './utils/sharedTypes';
 
-const App: React.FC = () => {
-  const [cartState, setCartState] = useState(readCartFromStorage());
-  const [totalPrice, setTotalPrice] = useState(calculateTotalPrice(cartState));
+const App: FC = () => {
+  const hash = window.location.hash.split('#step')[1];
+  const [step, setStep] = useState<number>(hash ? parseFloat(hash) : 1);
+  const [cartState, setCartState] = useState<CartItem[]>(readCartFromStorage());
+  const [totalPrice, setTotalPrice] = useState<number>(
+    calculateTotalPrice(cartState)
+  );
   const updateCartState = useCallback(() => {
     // write local storage to state and notify all components
     const newState = readCartFromStorage();
@@ -34,9 +39,14 @@ const App: React.FC = () => {
         />
       </Helmet>
       <Triangle />
-      <Card>
+      <Card noBG={step === 1}>
+        {console.log(`step`, step)}
         <Header />
-        <StepWizard className="stepWizard" isHashEnabled={true}>
+        <StepWizard
+          className="stepWizard"
+          isHashEnabled={true}
+          onStepChange={({ activeStep }) => setStep(activeStep)}
+        >
           <Welcome />
           <AddressInput />
           <PizzaSelection
@@ -69,13 +79,14 @@ const AppContainer = styled.div`
   position: relative;
 `;
 const Card = styled.div`
-  z-index: 100;
-  background-color: white;
+  background-color: ${({ noBG = false }: { noBG?: boolean }) =>
+    noBG ? 'transparent' : 'white'};
   width: 100%;
   height: 100%;
   overflow: hidden;
   border-radius: 5px;
   box-shadow: 10px 25px 55px 0px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
 
   /* NOT PRETTY BUT NEEDED TO OVERWRITE PLUGIN STYLES */
   .stepWizard {
@@ -100,7 +111,7 @@ const Triangle = styled.div`
     #ed5656 100%
   );
   &:after {
-    content: "";
+    content: '';
     position: absolute;
     width: 0;
     height: 0;
