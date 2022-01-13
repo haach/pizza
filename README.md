@@ -3,7 +3,7 @@
 
 
 ⚠️ Not maintained
-🚢 deployed at [vercel](https://pizza-haach.vercel.app/)
+🚢 deployed at [vercel](https://pizza-murex.vercel.app/)
 
 <hr></hr>
 
