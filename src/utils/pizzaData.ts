@@ -1,37 +1,40 @@
-import { Item } from "./sharedTypes";
+import { Item } from './sharedTypes';
 
 // This data would come typically from BE
-
-export const sizes: { [id: string]: Item } = {
+export const sizes: { [key: string]: Item } = {
   small: {
-    name: "small",
+    name: 'small',
     price: 15
   },
   medium: {
-    name: "medium",
+    name: 'medium',
     price: 20
   },
   large: {
-    name: "large",
+    name: 'large',
     price: 25
   }
 };
 
 export const toppings: { [id: string]: Item } = {
   olives: {
-    name: "Olives",
+    name: 'Olives',
     price: 3
   },
   pepperoni: {
-    name: "Pepperoni",
+    name: 'Pepperoni',
     price: 4
   },
   mushrooms: {
-    name: "Mushrooms",
+    name: 'Mushrooms',
     price: 2
   },
   pepper: {
-    name: "Pepper",
+    name: 'Pepper',
     price: 2
+  },
+  locust: {
+    name: 'Locust',
+    price: 4
   }
 };

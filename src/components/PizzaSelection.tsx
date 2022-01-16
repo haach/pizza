@@ -89,8 +89,8 @@ export const PizzaSelection: React.FC<StatefulWizardStepProps> = props => {
             {user &&
               `${user.streetName} ${user.houseNumber}, ${user.postalCode} ${user.city} `}
             <FakeLink onClick={props.previousStep}>edit</FakeLink>
-            <br />
-            Use the customizer to create your favourite pizza.
+            {/* <br />
+            Use the customizer to create your favourite pizza. */}
           </Paragraph>
           <ToppingsList
             selection={selection}
@@ -111,18 +111,24 @@ export const PizzaSelection: React.FC<StatefulWizardStepProps> = props => {
           </Preview>
           <SizeSelector>
             <Label>Select pizza size</Label>
-            {Object.keys(sizes).map((size: string) => (
-              <SizeIcon
-                src={
-                  selection.size.name === sizes[size].name
-                    ? sizeIcon_active
-                    : sizeIcon
-                }
-                key={sizes[size].name}
-                alt={sizes[size].name}
-                onClick={() => updateSelection(sizes[size])}
-              />
-            ))}
+            <SizeContainer>
+              {Object.keys(sizes).map(size => (
+                <SizeIconContainer>
+                  <SizeIcon
+                    size={size}
+                    src={
+                      selection.size.name === sizes[size].name
+                        ? sizeIcon_active
+                        : sizeIcon
+                    }
+                    key={sizes[size].name}
+                    alt={sizes[size].name}
+                    onClick={() => updateSelection(sizes[size])}
+                  />
+                  {sizes[size].name}
+                </SizeIconContainer>
+              ))}
+            </SizeContainer>
           </SizeSelector>
         </ContentBox>
       </SplitView>
@@ -143,7 +149,6 @@ export const PizzaSelection: React.FC<StatefulWizardStepProps> = props => {
 };
 
 const Preview = styled.div`
-  margin-top: 20px;
   position: relative;
   text-align: center;
   height: 35vh;
@@ -172,17 +177,23 @@ const SizeSelector = styled.div`
   padding-top: 15px;
   text-align: center;
 `;
+const SizeContainer = styled.div`
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+`;
+const SizeIconContainer = styled.div`
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  max-width: 80px;
+`;
 const SizeIcon = styled.img`
   cursor: pointer;
-  margin: 0 5px;
-  width: 20%;
-  display: inline-block;
-  &:first-of-type {
-    width: 14%;
-    margin-bottom: 3%;
-  }
-  &:nth-of-type(2) {
-    width: 17%;
-    margin-bottom: 1.5%;
-  }
+  transform: scale(1.5);
+  transform: scale(
+    ${({ size }: { size: keyof typeof sizes }) =>
+      size === 'small' ? 0.7 : size === 'medium' ? 0.85 : 1}
+  );
 `;
