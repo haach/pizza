@@ -1,8 +1,8 @@
 # Freestyle pizza creator
+
 ![pizzaPreview](https://user-images.githubusercontent.com/34210193/149172090-08a71686-c7bf-407b-8bd7-b4c6df4da57a.gif)
 
-
-⚠️ Not maintained
+⚠️ Not maintained, code mainly from jan 2020
 🚢 deployed at [vercel](https://pizza-haach.vercel.app/)
 
 <hr></hr>
@@ -19,20 +19,15 @@ yarn start
 
 ## 🎨 Design inspiration
 
-I cannot design something completely new from scratch for two good reasons:
+As this was for a challenge, I didn’t have the time to design something completely new from scratch (and that would be outside of my expertise as a developer).
 
-<ol>
-<li>it would take too much time</li>
-<li>I am a developer</li>
-</ol>
+Therefore, I decided to create a wizard-like app that is based on an existing design to make this more of a real-life example. After a deep dive into dribble, bechance, and Pinterest for inspiration, I ultimately landed on this [design](https://www.behance.net/gallery/81662745/Website-Header-Concept-Designs).
 
-So I decided to make this more of a real life example, where I would have a design to follow and so I did a deep dive into dribble, behance and pinterest for inspirations. This [design](https://www.behance.net/gallery/81662745/Website-Header-Concept-Designs) seemed fitting, because it matched the wizard-like app, I wanted to create.
+At first I thought about using a react ui component library, like Evergreen, but eventually decided to create the components myself, because I only needed a very limited amount of elements.
 
-At first I thought about using a react ui component library, like Evergreen, but eventually decided to create my components myself, because I wanted full control over their behaviour and I only needed a very limited amount of elements.
+Then I replaced the photo in the Design with this [pizza illustration](https://www.freepik.com/free-vector/pizza-slice-background_1168758.htm#page=1&query=pizza&position=46) from freepik (where I also got the [pizza mockup](https://www.freepik.com/free-vector/colorful-round-tasty-pizza_3799722.htm) from), to be able to animate the svg better. I sourced the [slized pizza icon](https://thenounproject.com/search/?q=pizza&i=1746127) for the size collection from noun project.
 
-Because I wanted to use some nice animations, I replaced the photo with this [pizza illustration](https://www.freepik.com/free-vector/pizza-slice-background_1168758.htm#page=1&query=pizza&position=46) from freepik. The [pizza mockup](https://www.freepik.com/free-vector/colorful-round-tasty-pizza_3799722.htm) that i used for the creator is also from freepik.
-
-This challenge right away reminded me of this game I had in the early 2000s, [pizza connection 2](https://store.steampowered.com/app/599000/Pizza_Connection_2/). As a little homage, I wanted the pizza creator to go bit into that direction. The [tiny icon](https://thenounproject.com/search/?q=pizza&i=1746127) for the size collection is from noun project.
+When I first got this challenge, I was immediately reminded of [pizza connection 2](https://store.steampowered.com/app/599000/Pizza_Connection_2/), a favourite from the early 2000s. So, I wanted to pay homage to it and thus based the app’s pizza creator on it, hopefully making it more fun and intuitive for the customer :)
 
 <hr></hr>
 
@@ -58,15 +53,14 @@ I used several npm modules:
 
 ### What I did not do, but would have in real life:
 
+- write tests
+- use a roter & prevent user from navigating via hash to all steps
 - create more modular components and encorporate design system / component library
-- write animations using a framework instead of keyframes & optimize them
+- write animations using a framework instead of keyframes
 - fetch sizes & toppings from backend
 - store all data in backend instead of local storage
 - group identical items in cart. put a "2x" if an identical item is in the cart multiple times
 - have better validation for input (phone number, credit card number, MM/YY stuff like that)
-- have actual request error handling: I created promises where you would expect typical fetch to BE actions, but of course we need real error handling
-- prevent user from navigating via hash to all steps
+- have actual request error handling (I created empty promises where you would typically would fetch a BE)
 - do not have hard coded text: I personally prefer i18n if you are encorporating different languages
-- make responsive
-- make browser & device compatible
-- write tests: checking with jest if components render correctly & data is being processed correctly
+- make responsive, browser & device compatible
