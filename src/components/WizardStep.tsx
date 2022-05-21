@@ -1,11 +1,11 @@
-import React, { ReactNode } from "react";
-import styled from "styled-components";
+import * as React from 'react';
+import { ComponentType } from 'react';
+import styled from 'styled-components';
+import { Children } from '../types/custom';
 
-interface WizardStepProps {
-  children?: ReactNode;
-}
-export const WizardStep: React.FC = ({ children }: WizardStepProps) =>
-  children ? <StepContainer>{children}</StepContainer> : <div />;
+export const WizardStep: ComponentType<Children> = ({ children }) => (
+  <StepContainer>{children}</StepContainer>
+);
 
 const StepContainer = styled.div`
   width: 100%;

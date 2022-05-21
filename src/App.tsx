@@ -30,6 +30,7 @@ const App: FC = () => {
   }, []);
   return (
     <AppContainer>
+      {/* @ts-ignore */}
       <Helmet>
         <meta charSet="utf-8" />
         <title>Pizza Challenge</title>
@@ -40,31 +41,34 @@ const App: FC = () => {
       </Helmet>
       <Triangle />
       <Card noBG={step === 1}>
-        {console.log(`step`, step)}
-        <Header />
-        <StepWizard
-          className="stepWizard"
-          isHashEnabled={true}
-          onStepChange={({ activeStep }) => setStep(activeStep)}
-        >
-          <Welcome />
-          <AddressInput />
-          <PizzaSelection
-            cartState={cartState}
-            totalPrice={totalPrice}
-            updateCartState={() => updateCartState()}
-          />
-          <Cart
-            cartState={cartState}
-            totalPrice={totalPrice}
-            updateCartState={() => updateCartState()}
-          />
-          <Checkout
-            totalPrice={totalPrice}
-            cartState={cartState}
-            updateCartState={() => updateCartState()}
-          />
-        </StepWizard>
+        <>
+          <Header />
+          <StepWizard
+            className="stepWizard"
+            isHashEnabled={true}
+            onStepChange={({ activeStep }: { activeStep: number }) =>
+              setStep(activeStep)
+            }
+          >
+            <Welcome />
+            <AddressInput />
+            <PizzaSelection
+              cartState={cartState}
+              totalPrice={totalPrice}
+              updateCartState={() => updateCartState()}
+            />
+            <Cart
+              cartState={cartState}
+              totalPrice={totalPrice}
+              updateCartState={() => updateCartState()}
+            />
+            <Checkout
+              totalPrice={totalPrice}
+              cartState={cartState}
+              updateCartState={() => updateCartState()}
+            />
+          </StepWizard>
+        </>
       </Card>
     </AppContainer>
   );

@@ -33,6 +33,6 @@ declare module 'react-step-wizard' {
   }
 
   export default class StepWizard extends React.PureComponent<
-    Partial<StepWizardProps>
+    Children & Partial<StepWizardProps>
   > {}
 }
