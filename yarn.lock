@@ -8905,10 +8905,10 @@ react-spinners@^0.8.0:
   dependencies:
     "@emotion/core" "^10.0.15"
 
-react-step-wizard@^5.3.0:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/react-step-wizard/-/react-step-wizard-5.3.0.tgz#2965b647bef457ec2c187e3f02826fcb98975875"
-  integrity sha512-WsYIvfYn9dDQowrqBK0vW5kSzavNGmq7epmcGRET6aFfWlz6Up+M3Hqiwj0S/zyufO3mEhuFGpZCKaygDgwKuA==
+react-step-wizard@^5.3.11:
+  version "5.3.11"
+  resolved "https://registry.yarnpkg.com/react-step-wizard/-/react-step-wizard-5.3.11.tgz#a52b46db772c0340dd6f45f93716d2afcf2196e2"
+  integrity sha512-TD3ocUdt4XWvisTNEiATh+cFuh1RK0LgvYqOResTIhLtFmdWnXzFVaNIZJ3qzW5Bm6yeotzZ4KAmRjmsqBXnWQ==
 
 react@^16.12.0:
   version "16.12.0"
@@ -9619,10 +9619,10 @@ shellwords@^0.1.1:
   resolved "https://registry.yarnpkg.com/shellwords/-/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
   integrity sha512-vFwSUfQvqybiICwZY5+DAWIPLKsWO31Q91JSKl3UYv+K5c2QRPzn0qzec6QPu1Qc9eHYItiP3NdJqNVqetYAww==
 
-shortid@^2.2.15:
-  version "2.2.15"
-  resolved "https://registry.yarnpkg.com/shortid/-/shortid-2.2.15.tgz#2b902eaa93a69b11120373cd42a1f1fe4437c122"
-  integrity sha512-5EaCy2mx2Jgc/Fdn9uuDuNIIfWBpzY4XIlhoqtXF6qsf+/+SGZ+FxDdX/ZsMZiWupIWNqAEmiNY4RC+LSmCeOw==
+shortid@^2.2.16:
+  version "2.2.16"
+  resolved "https://registry.yarnpkg.com/shortid/-/shortid-2.2.16.tgz#b742b8f0cb96406fd391c76bfc18a67a57fe5608"
+  integrity sha512-Ugt+GIZqvGXCIItnsL+lvFJOiN7RYqlGy7QE41O3YC1xbNSeDGIRO7xg2JJXIAj1cAGnOeC1r7/T9pgrtQbv4g==
   dependencies:
     nanoid "^2.1.0"
 
