@@ -1,12 +1,12 @@
-declare module "lottie-react-web" {
-  import * as React from "react";
-  import { AnimationConfig } from "lottie-web";
+declare module 'lottie-react-web' {
+  import * as React from 'react';
+  import { AnimationConfig } from 'lottie-web';
 
   export interface LottieOptions {
     animationData: any;
     loop?: boolean;
     autoplay?: boolean;
-    rendererSettings?: AnimationConfig["rendererSettings"];
+    rendererSettings?: AnimationConfig['rendererSettings'];
   }
 
   export interface LottieEventListener {

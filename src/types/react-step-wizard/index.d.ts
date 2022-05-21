@@ -1,5 +1,5 @@
-declare module "react-step-wizard" {
-  import * as React from "react";
+declare module 'react-step-wizard' {
+  import * as React from 'react';
 
   interface StepWizardProps {
     className: string;
