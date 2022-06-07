@@ -7,7 +7,7 @@ import {
   Checkout,
   Header,
   PizzaSelection,
-  Welcome
+  Welcome,
 } from './components';
 import StepWizard from 'react-step-wizard';
 import { colors } from './utils/variables';
@@ -79,15 +79,16 @@ export default App;
 const AppContainer = styled.div`
   width: 100vw;
   height: 100vh;
-  padding: 8vh 10vw;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 const Card = styled.div`
   background-color: ${({ noBG = false }: { noBG?: boolean }) =>
     noBG ? 'transparent' : 'white'};
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+  width: clamp(320px, 100%, 1240px);
+  height: clamp(320px, 100%, 780px);
   border-radius: 5px;
   box-shadow: 10px 25px 55px 0px rgba(0, 0, 0, 0.3);
   transition: background-color 0.3s ease;
@@ -99,6 +100,7 @@ const Card = styled.div`
   .stepWizard > div,
   .stepWizard > div > div {
     height: 100%;
+    overflow: auto;
   }
 `;
 const Triangle = styled.div`
