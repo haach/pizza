@@ -88,7 +88,7 @@ const Card = styled.div`
   background-color: ${({ noBG = false }: { noBG?: boolean }) =>
     noBG ? 'transparent' : 'white'};
   width: clamp(320px, 100%, 1240px);
-  height: clamp(320px, 100%, 780px);
+  height: clamp(320px, 100%, 820px);
   border-radius: 5px;
   box-shadow: 10px 25px 55px 0px rgba(0, 0, 0, 0.3);
   transition: background-color 0.3s ease;
