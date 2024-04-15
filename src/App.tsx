@@ -92,6 +92,7 @@ const Card = styled.div`
   border-radius: 5px;
   box-shadow: 10px 25px 55px 0px rgba(0, 0, 0, 0.3);
   transition: background-color 0.3s ease;
+  overflow: hidden;
 
   /* NOT PRETTY BUT NEEDED TO OVERWRITE PLUGIN STYLES */
   .stepWizard {
@@ -100,7 +101,7 @@ const Card = styled.div`
   .stepWizard > div,
   .stepWizard > div > div {
     height: 100%;
-    overflow: auto;
+    overflow-x: hidden;
   }
 `;
 const Triangle = styled.div`

@@ -112,6 +112,7 @@ export const SplitView = styled.div`
   display: flex;
   flex-direction: row;
   max-height: 100%;
+  overflow-x: hidden;
   align-items: ${({ centered }: { centered?: boolean }) =>
     centered ? "center" : "flex-start"};
   > * {
